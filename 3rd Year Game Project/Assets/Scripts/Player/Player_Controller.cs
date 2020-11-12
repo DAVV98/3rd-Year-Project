@@ -18,6 +18,9 @@ public class Player_Controller : MonoBehaviour
     public float fallMultiplier;
     public float lowJumpMultiplier;
 
+    [Header("Coins")]
+    public int coins;
+
 
     // Settings
     Rigidbody2D rb;
