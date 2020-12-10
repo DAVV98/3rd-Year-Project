@@ -20,6 +20,18 @@ public class Player_Controller : MonoBehaviour
 
     [Header("Coins")]
     public int coins;
+    public int ladderPrice;
+    public int snakePunishment;
+
+    [Header("Ladder")]
+    //public GameObject target_pos;
+    public GameObject Starget_pos;
+    public int level;
+
+    [Header("Levels")]
+    public Transform[] levels;
+
+    private level_hubs hubs;
 
 
     // Settings
@@ -29,6 +41,8 @@ public class Player_Controller : MonoBehaviour
     {
         // get this.objects rigidbody.
         rb = this.GetComponent<Rigidbody2D>();
+
+      
     }
 
     private void Update()
@@ -41,7 +55,7 @@ public class Player_Controller : MonoBehaviour
     private void FixedUpdate()
     {
         // call movement function
-        Movement();        
+        Movement();
     }
 
     void Movement()
@@ -96,6 +110,57 @@ public class Player_Controller : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(feetPos.position, feetPos.position + Vector3.down * groundedRaycastLength);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder")
+        {
+            if(coins >= ladderPrice)
+            {
+                this.transform.position = levels[level].transform.position;
+            }
+        }
+
+        if (collision.gameObject.tag == "Snake")
+        {
+            if (coins < snakePunishment)
+            {
+                this.transform.position = Starget_pos.transform.position;
+            }
+        }
+
+        if (collision.gameObject.tag == "Level 1")
+        {
+            level = 1;
+            Debug.Log(level);
+        }
+
+        if (collision.gameObject.tag == "Level 2")
+        {
+            level = 2;
+            Debug.Log(level);
+        }
+
+        if (collision.gameObject.tag == "Level 3")
+        {
+            level = 3;
+            Debug.Log(level);
+        }
+    }
+
+
+    // problem maybe is hubs is empty
+
+
+
+
+
+
+
+
+
+
 
 
 }
