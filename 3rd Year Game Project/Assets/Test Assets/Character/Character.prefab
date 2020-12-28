@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c4b5f80fb9e2fb84d91b94a17b955d5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,6 +156,25 @@ MonoBehaviour:
   fallMultiplier: 0
   lowJumpMultiplier: 30
   coins: 5
+  ladderPrice: 0
+  snakePunishment: 10
+  Starget_pos: {fileID: 0}
+  level: 0
+  levels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  min_time: 5
+  max_time: 11
+  timerStarted: 0
+  canMove: 0
+  random_timer: 0
+  timer_length: 0
+  countdown_text: {fileID: 0}
+  isMyTurn: 0
+  nextPlayer: 0
 --- !u!1 &4947306569465328813
 GameObject:
   m_ObjectHideFlags: 0

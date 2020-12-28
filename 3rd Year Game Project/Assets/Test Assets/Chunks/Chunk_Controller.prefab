@@ -43,10 +43,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f8081a6e531b64db3d64811a4698e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunks:
-  - {fileID: 735679097719718938, guid: fe247333f2d4fb04cab340c5168d4bc7, type: 3}
-  - {fileID: 735679097719718938, guid: fe247333f2d4fb04cab340c5168d4bc7, type: 3}
-  - {fileID: 735679097719718938, guid: fe247333f2d4fb04cab340c5168d4bc7, type: 3}
-  - {fileID: 735679097719718938, guid: fe247333f2d4fb04cab340c5168d4bc7, type: 3}
-  - {fileID: 735679097719718938, guid: fe247333f2d4fb04cab340c5168d4bc7, type: 3}
-  chunk_seperation: 15
+  reg_chunk: {fileID: 6682528586390429961, guid: 24fdc1bc4d8552347965164494ee2cec,
+    type: 3}
+  ladder_chunk: {fileID: 4392546168444252734, guid: c45a845292249ce4081072e39e115e9d,
+    type: 3}
+  snake_chunk: {fileID: 1014263830245402410, guid: 690400a975ff3ca449a4b5c120a0126a,
+    type: 3}
+  start_chunk: {fileID: 6172834198665623404, guid: 225f138e75cef434a90946d50df4062d,
+    type: 3}
+  isSnake: 0
+  isLadder: 1
+  randomStart_S: 0
+  randomEnd_S: 0
+  randomStart_L: 0
+  randomEnd_L: 0
+  random_S: 0
+  random_L: 0
+  Snake_Pos: 0
+  Ladder_Pos: 0
+  start: 0
+  array: 0000000000000000000000000000000000000000
+  play_chunks: []
+  chunk_seperation: 20
