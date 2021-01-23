@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2822235474991642978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9006538707868456754}
+  m_Layer: 0
+  m_Name: groudCheck_R
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9006538707868456754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822235474991642978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.36, y: -0.376, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4947306567739107071}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4739066931933580807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2805360102128327315}
+  m_Layer: 0
+  m_Name: groudCheck_L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2805360102128327315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739066931933580807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35, y: -0.376, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4947306567739107071}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4947306567739107066
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +92,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4947306569465328812}
+  - {fileID: 2805360102128327315}
+  - {fileID: 9006538707868456754}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,9 +135,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: c4b5f80fb9e2fb84d91b94a17b955d5a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5518868, b: 0.5518868, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -144,37 +206,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845feb1a1f718b94fa6aeb8abd38c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
-  horizontalInput: 0
+  GPC_Object: {fileID: 0}
   isGrounded: 0
+  L_Grounded: 0
+  M_Grounded: 0
+  R_Grounded: 0
+  feetPos_L: {fileID: 2805360102128327315}
   feetPos: {fileID: 4947306569465328812}
+  feetPos_R: {fileID: 9006538707868456754}
   groundedRaycastLength: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 2
-  fallMultiplier: 0
-  lowJumpMultiplier: 30
   coins: 5
-  ladderPrice: 0
+  ladderPrice: 5
   snakePunishment: 10
-  Starget_pos: {fileID: 0}
-  level: 0
   levels:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  min_time: 5
-  max_time: 11
   timerStarted: 0
   canMove: 0
-  random_timer: 0
-  timer_length: 0
-  countdown_text: {fileID: 0}
   isMyTurn: 0
   nextPlayer: 0
+  endTurn: 0
+  countdown_text: {fileID: 0}
+  useObj: 0
+  inLadderTrigger: 0
 --- !u!1 &4947306569465328813
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,12 @@ public class Player_Controller : MonoBehaviour
 
     [Header("Jumping")]
     public bool isGrounded;
+    public bool L_Grounded;
+    public bool M_Grounded;
+    public bool R_Grounded;
+    public Transform feetPos_L;
     public Transform feetPos;
+    public Transform feetPos_R;
     public float groundedRaycastLength;
     public LayerMask groundLayer;
     private float jumpForce;
@@ -29,6 +34,7 @@ public class Player_Controller : MonoBehaviour
     public int coins;
     public int ladderPrice;
     public int snakePunishment;
+    [SerializeField] Text Coins_Text;
 
     [Header("Current Floor")]
     private int level;
@@ -49,7 +55,10 @@ public class Player_Controller : MonoBehaviour
     private int min_time;
     private int max_time;
 
-
+    // Use Object
+    public bool useObj;
+    public bool inLadderTrigger;
+    public bool inPriceTrigger;
     // Settings
     Rigidbody2D rb;
 
@@ -64,7 +73,8 @@ public class Player_Controller : MonoBehaviour
         // Set next players turn inactive at start of game.
         nextPlayer = false;
 
-
+        // set use object to false
+        useObj = false;
 
         // set globals from global player script
         moveSpeed = GPC_Object.GetComponent<global_player_controller>().GLOBAL_movementSpeed;
@@ -74,6 +84,11 @@ public class Player_Controller : MonoBehaviour
 
         min_time = GPC_Object.GetComponent<global_player_controller>().GLOBAL_min_time;
         max_time = GPC_Object.GetComponent<global_player_controller>().GLOBAL_max_time;
+
+
+
+        // LAdder trigger
+        inLadderTrigger = false;
     }
 
     private void Update()
@@ -83,7 +98,7 @@ public class Player_Controller : MonoBehaviour
 
 
         //if input is z timer start, turn start
-        if (Input.GetKey("z") && isMyTurn && !nextPlayer)
+        if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
         {
             // set random turn length. TODO set values from global player field.
             random_timer = Random.Range(min_time,max_time);
@@ -98,8 +113,14 @@ public class Player_Controller : MonoBehaviour
             canMove = true;
         }
 
+
+        useLadder();
+
         // call jumping function
         Jumping();
+
+
+        Coins_Text.text = coins.ToString();
     }
 
     private void FixedUpdate()
@@ -141,8 +162,22 @@ public class Player_Controller : MonoBehaviour
 
     void Jumping()
     {
-        // Check grounding
-        isGrounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Check mid grounding
+        M_Grounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Check left grounding
+        L_Grounded = Physics2D.Raycast(feetPos_L.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Check right grounding
+        R_Grounded = Physics2D.Raycast(feetPos_R.position, Vector2.down, groundedRaycastLength, groundLayer);
+
+        // if any grounded raycast true, allow jumping
+        if (M_Grounded || L_Grounded || R_Grounded)
+        {
+            isGrounded = true;
+        }
+        else if(!M_Grounded && !L_Grounded && !R_Grounded)
+        {
+            isGrounded = false;
+        }
 
         if(canMove == true)
         {
@@ -174,15 +209,15 @@ public class Player_Controller : MonoBehaviour
         if (timerStarted == true)
         {
             timer_length -= (1.0f * Time.deltaTime);
-            countdown_text.text = timer_length.ToString("0");
+            countdown_text.text = (timer_length + 1).ToString("0");
 
             // allow movement if timer is counting
-            if (timer_length > 0)
+            if (timer_length > -1)
             {
                 canMove = true;
             }
             // once timer ends
-            else if(timer_length < 2)
+            else if(timer_length < -1)
             {
                 //cannot move
                 canMove = false;
@@ -195,31 +230,52 @@ public class Player_Controller : MonoBehaviour
     }
 
 
+    void useLadder()
+    {
+        // Get input for use object
+        if (Input.GetKeyDown("a") && inLadderTrigger || Input.GetKeyDown("joystick button 4") && inLadderTrigger)
+        {
+            // move
+            if (coins >= ladderPrice)
+            {
+                this.transform.position = levels[level].transform.position;
+                coins -= ladderPrice;
+            }
+        }
+    }
+
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(feetPos.position, feetPos.position + Vector3.down * groundedRaycastLength);
+        Gizmos.DrawLine(feetPos_L.position, feetPos.position + Vector3.down * groundedRaycastLength);
+        Gizmos.DrawLine(feetPos_R.position, feetPos.position + Vector3.down * groundedRaycastLength);
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Up when colliding with ladder
+        // Move to next floor hub when using ladder
         if (collision.gameObject.tag == "Ladder")
         {
-            if(coins >= ladderPrice)
-            {
-                this.transform.position = levels[level].transform.position;
-            }
+            inLadderTrigger = true;
         }
 
-        // Up when colliding with ladder
+        // Move to next floor hub when using ladder
+        if (collision.gameObject.tag == "Ladder_Price")
+        {
+            inPriceTrigger = true;
+        }
+
+        // Move to next floor hub when reaching end of level
         if (collision.gameObject.tag == "Level_End")
         {
            this.transform.position = levels[level].transform.position;
         }
 
-        // Down when colldiing with snake
+        // Move to previous floor hub when using snake
         if (collision.gameObject.tag == "Snake")
         {
             if (coins < snakePunishment)
@@ -228,7 +284,7 @@ public class Player_Controller : MonoBehaviour
             }
         }
 
-        // Check what level player is on
+        // Check what level player is on and change level var depending on floor.
         if (collision.gameObject.tag == "Level 1")
         {
             level = 1;
@@ -255,6 +311,27 @@ public class Player_Controller : MonoBehaviour
         {
             level = 5;
             Debug.Log(level);
+        }
+
+        //If falling out of game send to start
+        if(collision.gameObject.tag == "Kill_Bottom")
+        {
+            this.transform.position = levels[0].transform.position;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Move to next floor hub when using ladder
+        if (collision.gameObject.tag == "Ladder")
+        {
+            inLadderTrigger = false;
+        }
+
+        // Move to next floor hub when using ladder
+        if (collision.gameObject.tag == "Ladder_Price")
+        {
+            inPriceTrigger = false;
         }
     }
 
