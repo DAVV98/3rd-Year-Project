@@ -16,6 +16,9 @@ TagManager:
   - Kill_Bottom
   - Ladder_Price
   - Moving_Platform
+  - Projectile
+  - Stop_Projectiles
+  - Pushable
   layers:
   - Default
   - TransparentFX
@@ -27,7 +30,7 @@ TagManager:
   - 
   - Ground
   - Kill
-  - 
+  - Jumpable
   - 
   - 
   - 

@@ -24,15 +24,17 @@ public class Player_Controller : MonoBehaviour
     public Transform feetPos_R;
     public float groundedRaycastLength;
     public LayerMask groundLayer;
+    public Transform level_1_max_jump;
+    public Transform level_2_max_jump;
+    public Transform level_3_max_jump;
     private float jumpForce;
-
     private float fallMultiplier;
     private float lowJumpMultiplier;
 
     // turn many of these global
     [Header("Coins")]
-    public int coins;
-    public int ladderPrice;
+    private int coins;
+    private int ladderPrice;
     public int snakePunishment;
     [SerializeField] Text Coins_Text;
 
@@ -85,6 +87,9 @@ public class Player_Controller : MonoBehaviour
         min_time = GPC_Object.GetComponent<global_player_controller>().GLOBAL_min_time;
         max_time = GPC_Object.GetComponent<global_player_controller>().GLOBAL_max_time;
 
+        coins = GPC_Object.GetComponent<global_player_controller>().GLOBAL_coins;
+
+        ladderPrice = GPC_Object.GetComponent<global_player_controller>().GLOBAL_ladderPrice;
 
 
         // LAdder trigger
@@ -200,6 +205,30 @@ public class Player_Controller : MonoBehaviour
             rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
         }
 
+        //if level = x, dont allow jumping over level max height.
+        if(level == 1)
+        {
+            if(transform.position.y >= level_1_max_jump.position.y)
+            {
+                rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
+            }
+        }
+        //if level = x, dont allow jumping over level max height.
+        if (level == 2)
+        {
+            if (transform.position.y >= level_2_max_jump.position.y)
+            {
+                rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
+            }
+        }
+        //if level = x, dont allow jumping over level max height.
+        if (level == 3)
+        {
+            if (transform.position.y >= level_3_max_jump.position.y)
+            {
+                rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
+            }
+        }
     }
 
     // turn timer
@@ -313,8 +342,13 @@ public class Player_Controller : MonoBehaviour
             Debug.Log(level);
         }
 
+        if (collision.gameObject.tag == "Projectile")
+        {
+            this.transform.position = levels[level - 1].transform.position;
+        }
+
         //If falling out of game send to start
-        if(collision.gameObject.tag == "Kill_Bottom")
+        if (collision.gameObject.tag == "Kill_Bottom")
         {
             this.transform.position = levels[0].transform.position;
         }
