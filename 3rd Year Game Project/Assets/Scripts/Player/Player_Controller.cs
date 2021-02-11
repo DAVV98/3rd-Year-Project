@@ -8,6 +8,18 @@ public class Player_Controller : MonoBehaviour
     [Header("Global Controls")]
     public GameObject GPC_Object;
 
+    [Header("Animator")]
+    public Animator animator;
+
+    [Header("Attack")]
+    public bool isAttacking;
+    private float timeBetweenAttack;
+    public float startTimeBetweenAttacls;
+    public Transform attackPoint;
+    public LayerMask enemiesHit, blocksHit;
+    public float attackRange;
+    public float pushForce;
+    public bool beenPushed;
 
 
     [Header("Movement")]
@@ -15,28 +27,35 @@ public class Player_Controller : MonoBehaviour
     private float horizontalInput;
 
     [Header("Jumping")]
-    public bool isGrounded;
-    public bool L_Grounded;
-    public bool M_Grounded;
-    public bool R_Grounded;
+    private bool isGrounded;
+    private bool L_Grounded;
+    private bool M_Grounded;
+    private bool R_Grounded;
+    private float jumpForce;
+    private float fallMultiplier;
+    private float lowJumpMultiplier;
+
+    [Header("Grounding Mechanic")]
     public Transform feetPos_L;
     public Transform feetPos;
     public Transform feetPos_R;
     public float groundedRaycastLength;
     public LayerMask groundLayer;
+
+    [Header("Floor Climbing Blockers")]
     public Transform level_1_max_jump;
     public Transform level_2_max_jump;
     public Transform level_3_max_jump;
-    private float jumpForce;
-    private float fallMultiplier;
-    private float lowJumpMultiplier;
+
+    [Header("UI Text")]
+    [SerializeField] Text Coins_Text;
+    [SerializeField] Text countdown_text;
 
     // turn many of these global
     [Header("Coins")]
     private int coins;
     private int ladderPrice;
-    public int snakePunishment;
-    [SerializeField] Text Coins_Text;
+   
 
     [Header("Current Floor")]
     private int level;
@@ -53,7 +72,7 @@ public class Player_Controller : MonoBehaviour
     public bool endTurn;
     private int random_timer;
     private float timer_length;
-    [SerializeField] Text countdown_text;
+
     private int min_time;
     private int max_time;
 
@@ -94,121 +113,155 @@ public class Player_Controller : MonoBehaviour
 
         // LAdder trigger
         inLadderTrigger = false;
+
+
+        beenPushed = false;
     }
 
     private void Update()
     {
-        // Get horizontal imput.
+        // Gets horizontal input each frame, and sets this as a float variable
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        // Sets UI Coins text accoridng to number of coins player posses.
+        Coins_Text.text = coins.ToString();
 
-        //if input is z timer start, turn start
-        if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
-        {
-            // set random turn length. TODO set values from global player field.
-            random_timer = Random.Range(min_time,max_time);
-            
-            // set timer length
-            timer_length = random_timer;
+        // Function thta gets imput to start turn, and uses timer
+        startTurn();
 
-            // set timer has started to true.
-            timerStarted = true;
-
-            // Allow player to move.
-            canMove = true;
-        }
-
-
+        // Function that gets input if player wants to use ladder, if used checks if enough money.
         useLadder();
 
-        // call jumping function
+        // Function that allows player to jump and allows changing jump parameters
         Jumping();
 
+        // Function that allows for attack of coins boxes and to push rivals
+        attack();
 
-        Coins_Text.text = coins.ToString();
+
+        setAnimations();
+
+        pushed();
+
     }
 
     private void FixedUpdate()
     {
-        // timer function
-        
+        // Function that creates a countdown timer  
         timer();
-        // call movement function
+
+        // Function that is in control of horizontal player movement. 
         Movement();
+
+       
     }
 
+    void setAnimations()
+    {
+        if (isMyTurn)
+        {
+            if (horizontalInput > 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            }
+            else if (horizontalInput < 0)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+        }
+
+        if(isAttacking && isMyTurn)
+        {
+            animator.SetTrigger("Attack"); ;
+        }
+
+
+        if (isGrounded && isMyTurn)
+        {
+            // Set move animation
+            animator.SetFloat("Speed", Mathf.Abs(horizontalInput * moveSpeed));
+            animator.SetBool("isJumping", false);
+        }
+        else if(isGrounded && !isMyTurn)
+        {
+            // Set move animation
+            animator.SetFloat("Speed", Mathf.Abs(horizontalInput * 0));
+            animator.SetBool("isJumping", false);
+        }
+        else if(!isGrounded)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        
+    }
+    /// <summary>
+    /// Movement: 
+    /// Checks if it is players turn, if so allows input to change player horizontal velocity.
+    /// </summary>
     void Movement()
     {
         // if players turn allow movement.
         if (canMove == true)
         {
-            // change velocity to move player.
-            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y); // moveSpeed Global?
+            // change horizontal velocity to move player.
+            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+
+         
         }
         
     }
 
-    void constantMovement(float input)
-    {
-        // makes float input into integer.
-        if (input < 0)
-        {
-            horizontalInput = -1;
-        }
-        else if (input > 0)
-        {
-            horizontalInput = 1;
-        }
-        else
-        {
-            horizontalInput = 0;
-        }
-    }
-
+    /// <summary>
+    /// Jumping:
+    /// Calls Grounding Function to check if player is grounded, 
+    ///     if so and it is also the players turn allow jump input to change players horizontal velocity.
+    /// Calls JumpGravity so that gravity can be used to improve the feel of players jump
+    /// Calls floorBArriers to set up the points where player shouldnt be allowed to jump between floors.
+    /// </summary>
     void Jumping()
     {
-        // Check mid grounding
-        M_Grounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
-        // Check left grounding
-        L_Grounded = Physics2D.Raycast(feetPos_L.position, Vector2.down, groundedRaycastLength, groundLayer);
-        // Check right grounding
-        R_Grounded = Physics2D.Raycast(feetPos_R.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Checks if grounded
+        Grounding();
 
-        // if any grounded raycast true, allow jumping
-        if (M_Grounded || L_Grounded || R_Grounded)
-        {
-            isGrounded = true;
-        }
-        else if(!M_Grounded && !L_Grounded && !R_Grounded)
-        {
-            isGrounded = false;
-        }
-
+        //Check if it is players turn
         if(canMove == true)
         {
+            // Get Jump Input, and if player grounded allow vertical movement
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // jumpforce global?
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
 
             }
         }
-       
 
-        
-        if(rb.velocity.y < 0)
+        // Affect gravity once in the air
+        JumpGravity();
+
+        // Checks so you cant jump from floor to floor when not desired
+        floorBarriers();
+
+
+    }
+
+    void JumpGravity()
+    {
+        if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics.gravity * (fallMultiplier - 1) * Time.deltaTime; // multipliers global
         }
-        else if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
         }
+    }
 
+    void floorBarriers()
+    {
         //if level = x, dont allow jumping over level max height.
-        if(level == 1)
+        if (level == 1)
         {
-            if(transform.position.y >= level_1_max_jump.position.y)
+            if (transform.position.y >= level_1_max_jump.position.y)
             {
                 rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime; // multipliers global
             }
@@ -230,7 +283,25 @@ public class Player_Controller : MonoBehaviour
             }
         }
     }
+    void Grounding()
+    {
+        // Check mid grounding
+        M_Grounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Check left grounding
+        L_Grounded = Physics2D.Raycast(feetPos_L.position, Vector2.down, groundedRaycastLength, groundLayer);
+        // Check right grounding
+        R_Grounded = Physics2D.Raycast(feetPos_R.position, Vector2.down, groundedRaycastLength, groundLayer);
 
+        // if any grounded raycast true, allow jumping
+        if (M_Grounded || L_Grounded || R_Grounded)
+        {
+            isGrounded = true;
+        }
+        else if (!M_Grounded && !L_Grounded && !R_Grounded)
+        {
+            isGrounded = false;
+        }
+    }
     // turn timer
     void timer()
     {
@@ -281,6 +352,7 @@ public class Player_Controller : MonoBehaviour
         Gizmos.DrawLine(feetPos.position, feetPos.position + Vector3.down * groundedRaycastLength);
         Gizmos.DrawLine(feetPos_L.position, feetPos.position + Vector3.down * groundedRaycastLength);
         Gizmos.DrawLine(feetPos_R.position, feetPos.position + Vector3.down * groundedRaycastLength);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 
@@ -302,15 +374,6 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.tag == "Level_End")
         {
            this.transform.position = levels[level].transform.position;
-        }
-
-        // Move to previous floor hub when using snake
-        if (collision.gameObject.tag == "Snake")
-        {
-            if (coins < snakePunishment)
-            {
-                this.transform.position = levels[level - 2].transform.position;
-            }
         }
 
         // Check what level player is on and change level var depending on floor.
@@ -372,9 +435,67 @@ public class Player_Controller : MonoBehaviour
 
 
 
+    void startTurn()
+    {
+        //if input is z timer start, turn start
+        if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
+        {
+            // set random turn length. TODO set values from global player field.
+            random_timer = Random.Range(min_time, max_time);
+
+            // set timer length
+            timer_length = random_timer;
+
+            // set timer has started to true.
+            timerStarted = true;
+
+            // Allow player to move.
+            canMove = true;
+        }
+    }
+
+    void attack()
+    {
+
+        if(timeBetweenAttack <= 0)
+        {
+            
+            if (Input.GetKeyDown("joystick button 5"))
+            {
+                
+                isAttacking = true;
+                Collider2D[] hitenemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesHit);
+               // Collider2D[] hitblock = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, blocksHit);
+
+                foreach (Collider2D enemy in hitenemy)
+                {
+                    Debug.Log("Enemy Hit");
+                    enemy.GetComponent<Player_Controller>().beenPushed = true;
+                }
+                
+
+                timeBetweenAttack = startTimeBetweenAttacls;
+            }      
+        }
+        else
+        {
+            isAttacking = false;
+            timeBetweenAttack -= Time.deltaTime;
+        }
+        
 
 
+    }
 
+    void pushed()
+    {
+        if (beenPushed == true)
+        {
+            Debug.Log("Pushed");
+
+            beenPushed = false;
+        }
+    }
 
 
 

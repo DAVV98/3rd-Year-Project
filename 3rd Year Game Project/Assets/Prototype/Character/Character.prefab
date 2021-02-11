@@ -221,8 +221,6 @@ MonoBehaviour:
   level_1_max_jump: {fileID: 0}
   level_2_max_jump: {fileID: 0}
   level_3_max_jump: {fileID: 0}
-  coins: 5
-  ladderPrice: 5
   snakePunishment: 10
   Coins_Text: {fileID: 0}
   levels:
