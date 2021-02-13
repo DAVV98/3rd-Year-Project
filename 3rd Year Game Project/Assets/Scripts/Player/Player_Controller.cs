@@ -14,7 +14,7 @@ public class Player_Controller : MonoBehaviour
     [Header("Attack")]
     public bool isAttacking;
     private float timeBetweenAttack;
-    public float startTimeBetweenAttacls;
+    public float startTimeBetweenAttacks;
     public Transform attackPoint;
     public LayerMask enemiesHit, blocksHit;
     public float attackRange;
@@ -138,10 +138,9 @@ public class Player_Controller : MonoBehaviour
         // Function that allows for attack of coins boxes and to push rivals
         attack();
 
-
+        // Function that changes player animations depending on conditions
         setAnimations();
 
-        pushed();
 
     }
 
@@ -454,32 +453,58 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set a timer so you cannt spam attack
+    /// if attack input:
+    /// check if overlap circles is hitting
+    /// 
+    /// if circle hitting an enemy push them back
+    /// if circle hitting coin block - break down until; coin pops out.
+    /// 
+    /// timer countdown one attacked, once ti gets to zero allow attacks to happen
+    /// </summary>
     void attack()
     {
 
+        // if attack time is zero allow attack
         if(timeBetweenAttack <= 0)
         {
             
+            // if attack button pressed
             if (Input.GetKeyDown("joystick button 5"))
             {
                 
                 isAttacking = true;
+
+                // Circle collider that checks for enemies
                 Collider2D[] hitenemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesHit);
                // Collider2D[] hitblock = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, blocksHit);
 
+                // do this to each enemy in the circle collider.
                 foreach (Collider2D enemy in hitenemy)
                 {
-                    Debug.Log("Enemy Hit");
-                    enemy.GetComponent<Player_Controller>().beenPushed = true;
+                    // Push enemy right if enemy is to the right
+                    if(enemy.transform.position.x > gameObject.transform.position.x)
+                    {
+                        enemy.GetComponent<Rigidbody2D>().velocity = new Vector3(pushForce, 0, 0);
+                    }
+                    // Push enemy left if enemy to the left.
+                    else if(enemy.transform.position.x < gameObject.transform.position.x)
+                    {
+                        enemy.GetComponent<Rigidbody2D>().velocity = new Vector3(-pushForce, 0, 0);
+                    }
+                    
                 }
                 
-
-                timeBetweenAttack = startTimeBetweenAttacls;
+                // Set timer to timer length, this also starts countodwon timer 
+                timeBetweenAttack = startTimeBetweenAttacks;
             }      
         }
         else
         {
             isAttacking = false;
+
+            // reduce timer by one second.
             timeBetweenAttack -= Time.deltaTime;
         }
         
@@ -487,15 +512,6 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    void pushed()
-    {
-        if (beenPushed == true)
-        {
-            Debug.Log("Pushed");
-
-            beenPushed = false;
-        }
-    }
 
 
 
