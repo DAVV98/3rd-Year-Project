@@ -53,7 +53,7 @@ public class Player_Controller : MonoBehaviour
 
     // turn many of these global
     [Header("Coins")]
-    private int coins;
+    public int coins;
     private int ladderPrice;
    
 
@@ -123,8 +123,12 @@ public class Player_Controller : MonoBehaviour
         // Gets horizontal input each frame, and sets this as a float variable
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        Debug.Log(coins);
+
+        int curr_coins = coins;
+
         // Sets UI Coins text accoridng to number of coins player posses.
-        Coins_Text.text = coins.ToString();
+        Coins_Text.text = curr_coins.ToString();
 
         // Function thta gets imput to start turn, and uses timer
         startTurn();
@@ -135,8 +139,13 @@ public class Player_Controller : MonoBehaviour
         // Function that allows player to jump and allows changing jump parameters
         Jumping();
 
-        // Function that allows for attack of coins boxes and to push rivals
-        attack();
+        //only  allow attack if on turn
+        if(isMyTurn == true)
+        {
+            // Function that allows for attack of coins boxes and to push rivals
+            attack();
+        }
+        
 
         // Function that changes player animations depending on conditions
         setAnimations();
@@ -473,14 +482,15 @@ public class Player_Controller : MonoBehaviour
             // if attack button pressed
             if (Input.GetKeyDown("joystick button 5"))
             {
-                
+                // player is attack 
                 isAttacking = true;
 
-                // Circle collider that checks for enemies
+                // Circle collider that checks for enemies or coin blocks
                 Collider2D[] hitenemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesHit);
-               // Collider2D[] hitblock = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, blocksHit);
+                Collider2D[] hitblock = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, blocksHit);
 
                 // do this to each enemy in the circle collider.
+                
                 foreach (Collider2D enemy in hitenemy)
                 {
                     // Push enemy right if enemy is to the right
@@ -491,9 +501,17 @@ public class Player_Controller : MonoBehaviour
                     // Push enemy left if enemy to the left.
                     else if(enemy.transform.position.x < gameObject.transform.position.x)
                     {
+
                         enemy.GetComponent<Rigidbody2D>().velocity = new Vector3(-pushForce, 0, 0);
                     }
                     
+                }
+                
+                // do this for every block in circle collider
+                foreach(Collider2D block in hitblock)
+                {
+                    // reduce health by one
+                    block.GetComponent<coin_block>().health -= 1;
                 }
                 
                 // Set timer to timer length, this also starts countodwon timer 
@@ -502,6 +520,7 @@ public class Player_Controller : MonoBehaviour
         }
         else
         {
+            // player is no longer attacking
             isAttacking = false;
 
             // reduce timer by one second.

@@ -30,6 +30,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.package-manager-ui": {
+      "version": "file:C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.package-manager-ui",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.test-framework": {
       "version": "1.1.16",
       "depth": 0,
