@@ -19,6 +19,9 @@ TagManager:
   - Projectile
   - Stop_Projectiles
   - Pushable
+  - Player_Sleep
+  - Speed_Up
+  - Health_Up
   layers:
   - Default
   - TransparentFX

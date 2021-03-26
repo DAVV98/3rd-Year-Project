@@ -6,18 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Prototype_Final/0.Intro.unity
+    path: Assets/Originals/Prototype_Final/0.Intro.unity
     guid: 6451b2c42c3142245b968f3480bd2ac8
   - enabled: 1
-    path: Assets/Prototype_Final/1.How To.unity
+    path: Assets/Originals/Prototype_Final/1.How To.unity
     guid: 63f79fed8fb72bb47806425e17e4d222
   - enabled: 1
-    path: Assets/Prototype_Final/2.Controls.unity
+    path: Assets/Originals/Prototype_Final/2.Controls.unity
     guid: c8a80673d72b7e346a20224443763927
   - enabled: 1
-    path: Assets/Prototype_Final/3.Prototype V2.unity
+    path: Assets/Originals/Prototype_Final/3.Prototype V2.unity
     guid: 8c41f93dc8e8fbb4fb98016a8274e39f
   - enabled: 1
-    path: Assets/Prototype_Final/4.Final.unity
+    path: Assets/Originals/Prototype_Final/4.Final.unity
     guid: dbc8f630a2b4c964498a91e20c5f8dc8
   m_configObjects: {}
