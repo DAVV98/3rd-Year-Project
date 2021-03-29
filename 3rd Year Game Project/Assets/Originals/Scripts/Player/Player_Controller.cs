@@ -36,6 +36,9 @@ public class Player_Controller : MonoBehaviour
     private float speed_power_up; // extra speed from power up
     private float moveSpeed; // movement speed
     private float horizontalInput; // controller horizontal input
+    public float air_movement_divider; // divides movespeed in air to allow for more realistic jump
+
+
 
     [Header("Jumping")]
     // grounding checks
@@ -186,6 +189,7 @@ public class Player_Controller : MonoBehaviour
         // Gets horizontal input each frame, and sets this as a float variable
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
+   
 
         // Sets UI Coins text accoridng to number of coins player posses.
         //Coins_Text.text = coins.ToString();
@@ -308,11 +312,19 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Movement()
     {
+        // Checks if grounded
+        Grounding();
+
         // if players turn allow movement.
         if (canMove == true)
         {
+           
+           
             // change horizontal velocity to move player.
-            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);   
+            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+            
+        
+
         }
         
     }
@@ -325,8 +337,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Jumping()
     {
-        // Checks if grounded
-        Grounding();
+       
 
         //Check if it is players turn
         if(canMove == true)
@@ -334,7 +345,7 @@ public class Player_Controller : MonoBehaviour
             // Get Jump Input, and if player grounded allow vertical movement
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                //rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
 
             }

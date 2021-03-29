@@ -5,39 +5,49 @@ using UnityEngine;
 public class moving_platform : MonoBehaviour
 {
     [Header("Plat_Type")]
-    public bool isHorizontal;
-    public bool isVertical;
-    public bool type_1;
-    public bool type_2;
+    public bool isHorizontal; // if true platfrom moves horizontally
+    public bool isVertical; // if true platform moves vertically
 
-    [Header("Positions")]
+    [Header("Start/End Positions")]
+    // 4 vertices positions
     public Transform left_pos;
     public Transform right_pos;
     public Transform up_pos;
     public Transform bot_pos;
-
     public Transform start_pos;
-    public bool move_right;
-    public bool move_left;
-    public bool move_up;
-    public bool move_down;
+    
+    // for movement algorithm
+    private bool move_right;
+    private bool move_left;
+    private bool move_up;
+    private bool move_down;
 
     [Header("Movement")]
-    public float platform_move_speed;
+    public float platform_move_speed; // speed which platform moves
 
-    public Vector2 nextPos;
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function Start():
+    ///     - Runs at the start of the run time
+    ///     - Used for Player set up.
+    /// </summary>
     
-    // Start is called before the first frame update
     void Start()
     {
-        if (type_1)
+
+        // sets bool for horizontal platform algorithm
+        if (isHorizontal)
         {
             move_right = true;
             move_left = false;
             move_up = true;
             move_down = false;
         }
-        else if (type_2)
+
+        // sets bool for vertical platform algorithm
+        else if (isVertical)
         {
             move_right = false;
             move_left = true;
@@ -46,83 +56,148 @@ public class moving_platform : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function Update():
+    ///     - Runs at every frame
+    ///     - Used to update player.
+    /// </summary>
+
     void Update()
     {
+        // runs horizontal platform algorithm if isHorizontal == true
         if(isHorizontal)
         {
             horizontal_plat();
         }
-        else if(isVertical)
+
+        // runs vertical platform algorithm if isVertical == true
+        else if (isVertical)
         {
             vertical_plat();
         }
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function horizontal_plat():
+    ///     - Makes the platform move in a horizontal direction, between right pos and left pos.
+    /// </summary>
+
     private void horizontal_plat()
     {
+        // if platform reaches left pos move right
         if (this.transform.position.x <= left_pos.position.x)
         {
             move_right = true;
             move_left = false;
         }
+        // if platform reaches right pos move left
         else if (this.transform.position.x >= right_pos.position.x)
         {
             move_right = false;
             move_left = true;
         }
 
-
-        if (move_right == true && move_left == false)
+        // if more right is true, move plaform right by changing transform.position
+        if (move_right == true)
         {
             transform.position = new Vector2(transform.position.x + platform_move_speed * Time.deltaTime, transform.position.y);
         }
-        else if (move_left == true && move_right == false)
+        // if more left is true, move plaform left by changing transform.position
+        else if (move_left == true)
         {
             transform.position = new Vector2(transform.position.x - platform_move_speed * Time.deltaTime, transform.position.y);
         }
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function vertical_plat():
+    ///     - Makes the platform move in a vertical direction, between bot pos and up pos.
+    /// </summary>
+
     private void vertical_plat()
     {
+        // if platform reaches bot pos move up
         if (this.transform.position.y <= bot_pos.position.y)
         {
             move_up = true;
             move_down = false;
         }
+
+        // if platform reaches up pos move down
         else if (this.transform.position.y >= up_pos.position.y)
         {
             move_up = false;
             move_down = true;
         }
 
-
-        if (move_up == true && move_down == false)
+        // if more up is true, move plaform up by changing transform.position
+        if (move_up == true)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + platform_move_speed * Time.deltaTime);
         }
-        else if (move_down == true && move_up == false)
+        // if more down is true, move plaform down by changing transform.position
+        else if (move_down)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - platform_move_speed * Time.deltaTime);
         }
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function OnCollisionEnter2D(): 
+    ///     Parameter:
+    ///     - Collision (Collision2D): collider of object collided with
+    ///     
+    ///     Role:
+    ///     - check if collsion with another collider.
+    /// </summary>
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // if collision with player or stop_projectile block:
+        //      - Set platform as parent so children move with platform
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(transform);
         }
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function OnCollisionExit2D(): 
+    ///     Parameter:
+    ///     - Collision (Collision2D): collider of object collided with
+    ///     
+    ///     Role:
+    ///     - check if collsion with another collider has stopped
+    /// </summary>
+
     private void OnCollisionExit2D(Collision2D collision)
     {
+        // if collision with player or stop_projectile block stops:
+        //      - Remove platform as parent
+
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(null);
         }
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    /// <summary>
+    /// Function OnDrawGizmos(): 
+    ///     - draws gizmos 
+    /// </summary>
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(bot_pos.position, up_pos.position);

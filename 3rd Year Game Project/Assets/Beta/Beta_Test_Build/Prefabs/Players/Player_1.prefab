@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5878371884710407514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.37, z: 0}
+  m_LocalPosition: {x: 1, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5878371885541225407}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5878371885541225403}
   - component: {fileID: 5878371885541225280}
   m_Layer: 11
-  m_Name: Player_1_Final
+  m_Name: Player_1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,8 +238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845feb1a1f718b94fa6aeb8abd38c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: 1
   GPC_Object: {fileID: 0}
   animator: {fileID: 5878371885541225280}
+  camY: 0
   isAttacking: 0
   startTimeBetweenAttacks: 1
   attackPoint: {fileID: 5878371885395894159}
@@ -251,19 +253,17 @@ MonoBehaviour:
     m_Bits: 0
   attackRange: 0.6
   pushForce: 10
-  beenPushed: 0
   feetPos_L: {fileID: 5878371885737483543}
   feetPos: {fileID: 5878371884904121828}
   feetPos_R: {fileID: 5878371884710407515}
-  groundedRaycastLength: 0.3
+  groundedRaycastLength: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  level_1_max_jump: {fileID: 0}
-  level_2_max_jump: {fileID: 0}
-  level_3_max_jump: {fileID: 0}
+  level_max_jump: []
   Coins_Text: {fileID: 0}
   countdown_text: {fileID: 0}
+  coins: 0
   levels:
   - {fileID: 0}
   - {fileID: 0}
@@ -319,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5878371885737483542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.37, z: 0}
+  m_LocalPosition: {x: -1, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5878371885541225407}
