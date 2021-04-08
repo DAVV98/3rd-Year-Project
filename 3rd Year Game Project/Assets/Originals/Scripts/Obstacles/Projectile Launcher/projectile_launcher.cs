@@ -11,6 +11,7 @@ public class projectile_launcher : MonoBehaviour
     [Header("Projectiles")]
     public GameObject projectile;
     private GameObject clone;
+    public Transform launch_pos;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class projectile_launcher : MonoBehaviour
     {
         if(timer <= 0)
         {
-            Instantiate(clone, transform.position, Quaternion.identity);
+            Instantiate(clone, launch_pos.position, Quaternion.identity);
             timer = time_between_shots;
         }
         else

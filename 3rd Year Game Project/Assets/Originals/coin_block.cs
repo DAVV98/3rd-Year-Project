@@ -62,16 +62,17 @@ public class coin_block : MonoBehaviour
         {
            
             stages[3].SetActive(true);
+            stages[1].SetActive(false);
+            stages[2].SetActive(false);
+            stages[0].SetActive(false);
             
-            if(callOnce == true)
+            if (callOnce == true)
             {
                 activateCoin();
             }
             
             callOnce = false;
-            stages[1].SetActive(false);
-            stages[2].SetActive(false);
-            stages[0].SetActive(false);
+           
         }
     }
 

@@ -1,0 +1,2246 @@
+fileFormatVersion: 2
+guid: 675f765e328e2b1418bdf60a448b7980
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5024932429520086506
+    second: Emerge1
+  - first:
+      213: 8912024950077021416
+    second: Emerge2
+  - first:
+      213: -9056845449847632023
+    second: Emerge3
+  - first:
+      213: 4967506010161640123
+    second: Emerge4
+  - first:
+      213: -5789811461635301395
+    second: Emerge5
+  - first:
+      213: -4990642239118591126
+    second: Emerge6
+  - first:
+      213: -5156964631393149569
+    second: Emerge7
+  - first:
+      213: -3486654106724601822
+    second: Roar1
+  - first:
+      213: 8252528314613128088
+    second: Roar2
+  - first:
+      213: -1376339342024615428
+    second: Roar3
+  - first:
+      213: -616714753902680801
+    second: Roar4
+  - first:
+      213: 2085546846164904222
+    second: Roar5
+  - first:
+      213: -5740426747869261278
+    second: Roar6
+  - first:
+      213: 5670776761013168159
+    second: Roar7
+  - first:
+      213: 8869201774671682545
+    second: Roar8
+  - first:
+      213: 2608408282167110028
+    second: Idle1
+  - first:
+      213: -5817980276610602690
+    second: Idle2
+  - first:
+      213: -1299816427399727280
+    second: Idle3
+  - first:
+      213: -700663170160927166
+    second: Idle4
+  - first:
+      213: 7173124042900726583
+    second: Idle5
+  - first:
+      213: -416022237038818182
+    second: Idle6
+  - first:
+      213: 2909352753525546319
+    second: LeapAtk1
+  - first:
+      213: -5826556218229913212
+    second: LeapAtk2
+  - first:
+      213: -6618171194117749804
+    second: LeapAtk3
+  - first:
+      213: -1505823909316322377
+    second: LeapAtk4
+  - first:
+      213: 6656761221088068290
+    second: LeapAtk5
+  - first:
+      213: 3930946806090318698
+    second: LeapAtk6
+  - first:
+      213: -3655248861499856135
+    second: LeapAtk7
+  - first:
+      213: 7021561601975020402
+    second: LeapAtk8
+  - first:
+      213: 6128880245469666391
+    second: LeapAtk9
+  - first:
+      213: -3838235804373584383
+    second: LeapAtk10
+  - first:
+      213: -8569342179298928456
+    second: LeapAtk11
+  - first:
+      213: 1243455735255426142
+    second: LeapAtk12
+  - first:
+      213: -8500365558116479939
+    second: Attack1
+  - first:
+      213: -130910747752057389
+    second: Attack2
+  - first:
+      213: 4899196532254069320
+    second: Attack3
+  - first:
+      213: -1123949347982087659
+    second: Attack4
+  - first:
+      213: 9071488530560178986
+    second: Attack5
+  - first:
+      213: 6297993721249169545
+    second: Attack6
+  - first:
+      213: 9162928316365078686
+    second: Attack7
+  - first:
+      213: 2436259984176343464
+    second: Attack8
+  - first:
+      213: -2295145231594315476
+    second: Move1
+  - first:
+      213: 114968383940640714
+    second: Move2
+  - first:
+      213: -4486669935759205724
+    second: Move3
+  - first:
+      213: 977769163979082832
+    second: Move4
+  - first:
+      213: 7762027054947344034
+    second: Move5
+  - first:
+      213: -7877593340490590186
+    second: Move6
+  - first:
+      213: 1175074403435300485
+    second: Move7
+  - first:
+      213: 5591223557201089243
+    second: Move8
+  - first:
+      213: 4242181752597672618
+    second: Damage1
+  - first:
+      213: -3958460635220995264
+    second: Damage2
+  - first:
+      213: 5387453199259900200
+    second: Damage3
+  - first:
+      213: -4537555300688890388
+    second: Damage4
+  - first:
+      213: 5079557945052357427
+    second: DamageHigh1
+  - first:
+      213: 2663430418560460419
+    second: DamageHigh2
+  - first:
+      213: 1981847860329916688
+    second: DamageHigh3
+  - first:
+      213: 23377799722317394
+    second: DamageHigh4
+  - first:
+      213: -3568462977117166759
+    second: DamageHigh5
+  - first:
+      213: -1444048952730203345
+    second: Death1
+  - first:
+      213: -5971509623822601510
+    second: Death2
+  - first:
+      213: -9084612951478691132
+    second: Death3
+  - first:
+      213: -7590699708033590943
+    second: Death4
+  - first:
+      213: 5828945358843086473
+    second: Death5
+  - first:
+      213: -3076560854150318015
+    second: Death6
+  - first:
+      213: -9026627467595598957
+    second: Death7
+  - first:
+      213: -1589441538307828073
+    second: Death8
+  - first:
+      213: -5242085561228013932
+    second: Death9
+  - first:
+      213: -256839473766366490
+    second: Death10
+  - first:
+      213: -6399834486312086014
+    second: Death11
+  - first:
+      213: 3362820203269511912
+    second: Emerge1
+  - first:
+      213: -6347150765209711626
+    second: Emerge2
+  - first:
+      213: -572566768612980124
+    second: Emerge3
+  - first:
+      213: -8900933645475433811
+    second: Emerge4
+  - first:
+      213: 5570640261809312005
+    second: Emerge5
+  - first:
+      213: -3600849618612474956
+    second: Emerge6
+  - first:
+      213: -4515879684418083757
+    second: Emerge7
+  - first:
+      213: 7676718208876312421
+    second: Roar1
+  - first:
+      213: 5714481797243501622
+    second: Roar2
+  - first:
+      213: -6840940934337547778
+    second: Roar3
+  - first:
+      213: -3933382522252966283
+    second: Roar4
+  - first:
+      213: -5108229708446768337
+    second: Roar5
+  - first:
+      213: -2650641581085798713
+    second: Roar6
+  - first:
+      213: 2133783250191034609
+    second: Roar7
+  - first:
+      213: -4274717196143351259
+    second: Roar8
+  - first:
+      213: -8906199255770591998
+    second: Idle1
+  - first:
+      213: -3705593677206564695
+    second: Idle2
+  - first:
+      213: -4511655150284643660
+    second: Idle3
+  - first:
+      213: -570502075461692769
+    second: Idle4
+  - first:
+      213: -9028853527542438334
+    second: Idle5
+  - first:
+      213: -6302188426528508304
+    second: Idle6
+  - first:
+      213: -4069759242944549033
+    second: Idle6
+  - first:
+      213: -2762853191927415534
+    second: Leap1
+  - first:
+      213: 8297418465743848162
+    second: Leap2
+  - first:
+      213: -3755651891612948204
+    second: Leap3
+  - first:
+      213: 2276198516581913597
+    second: Leap4
+  - first:
+      213: -2181484710980033356
+    second: Leap5
+  - first:
+      213: -611949712907721533
+    second: Leap6
+  - first:
+      213: 1751416627333164430
+    second: Leap7
+  - first:
+      213: 334800553774557568
+    second: Leap8
+  - first:
+      213: 2311370535047180824
+    second: Leap9
+  - first:
+      213: -2643012486432096874
+    second: Leap10
+  - first:
+      213: -4105146898179245865
+    second: Leap11
+  - first:
+      213: -6193191175920251979
+    second: Attack1
+  - first:
+      213: -3642855754883396500
+    second: Attack2
+  - first:
+      213: -2865256040144319843
+    second: Attack3
+  - first:
+      213: 937264062499838531
+    second: Attack4
+  - first:
+      213: -1308331146127999543
+    second: Attack5
+  - first:
+      213: 6741448327273983064
+    second: Attack6
+  - first:
+      213: -6094837180533989245
+    second: Attack7
+  - first:
+      213: 3565505487946206039
+    second: Attack8
+  - first:
+      213: -8851882043260102901
+    second: Move1
+  - first:
+      213: -4819369480462519724
+    second: Move2
+  - first:
+      213: 1282670011768998028
+    second: Move3
+  - first:
+      213: -7020008635067841173
+    second: Move4
+  - first:
+      213: 1579260168176686852
+    second: Move5
+  - first:
+      213: 2517485438890449482
+    second: Move6
+  - first:
+      213: 2195879615170380981
+    second: Move7
+  - first:
+      213: -6299658419518654455
+    second: Move8
+  - first:
+      213: 2720313509005900011
+    second: Damage1
+  - first:
+      213: 203175615175660014
+    second: Damage2
+  - first:
+      213: -6183534504154661957
+    second: Damage3
+  - first:
+      213: -4050583903003065483
+    second: Damage4
+  - first:
+      213: 4815406768906002971
+    second: DamageHigh1
+  - first:
+      213: -5785250566132240491
+    second: DamageHigh2
+  - first:
+      213: 5984009485834179738
+    second: DamageHigh3
+  - first:
+      213: -6119088555146353763
+    second: DamageHigh4
+  - first:
+      213: -5606922658516987682
+    second: Damage5
+  - first:
+      213: -8946856635382559751
+    second: Death1
+  - first:
+      213: 2837099542015780714
+    second: Death2
+  - first:
+      213: -6284998536631849117
+    second: Death3
+  - first:
+      213: 5958591536735410039
+    second: Death4
+  - first:
+      213: 7334791703081149805
+    second: Death5
+  - first:
+      213: -1109442616867866321
+    second: Death6
+  - first:
+      213: -7032807020851476794
+    second: Death7
+  - first:
+      213: 8385863235298535363
+    second: Death8
+  - first:
+      213: -4965838825893669412
+    second: Death9
+  - first:
+      213: 3646115229957889896
+    second: Death10
+  - first:
+      213: -4566725858880235146
+    second: Death11
+  - first:
+      213: 3362820203269511912
+    second: Emerge1
+  - first:
+      213: -6347150765209711626
+    second: Emerge2
+  - first:
+      213: -572566768612980124
+    second: Emerge3
+  - first:
+      213: -8900933645475433811
+    second: Emerge4
+  - first:
+      213: 5570640261809312005
+    second: Emerge5
+  - first:
+      213: -3600849618612474956
+    second: Emerge6
+  - first:
+      213: -4515879684418083757
+    second: Emerge7
+  - first:
+      213: 7676718208876312421
+    second: Emerge8
+  - first:
+      213: 5714481797243501622
+    second: Roar1
+  - first:
+      213: -6840940934337547778
+    second: Roar2
+  - first:
+      213: -3933382522252966283
+    second: Roar3
+  - first:
+      213: -5108229708446768337
+    second: Roar4
+  - first:
+      213: -2650641581085798713
+    second: Roar5
+  - first:
+      213: 2133783250191034609
+    second: Roar6
+  - first:
+      213: -4274717196143351259
+    second: Roar7
+  - first:
+      213: -8906199255770591998
+    second: Roar8
+  - first:
+      213: -3705593677206564695
+    second: Idle1
+  - first:
+      213: -4511655150284643660
+    second: Idle2
+  - first:
+      213: -570502075461692769
+    second: Idle3
+  - first:
+      213: -9028853527542438334
+    second: Idle4
+  - first:
+      213: -6302188426528508304
+    second: Idle5
+  - first:
+      213: 2909352753525546319
+    second: Idle6
+  - first:
+      213: -5826556218229913212
+    second: Leap1
+  - first:
+      213: -6618171194117749804
+    second: Leap2
+  - first:
+      213: -1505823909316322377
+    second: Leap3
+  - first:
+      213: 6656761221088068290
+    second: Leap4
+  - first:
+      213: 3930946806090318698
+    second: Leap5
+  - first:
+      213: -3655248861499856135
+    second: Leap6
+  - first:
+      213: 7021561601975020402
+    second: Leap7
+  - first:
+      213: 6128880245469666391
+    second: Leap8
+  - first:
+      213: -3838235804373584383
+    second: Leap9
+  - first:
+      213: -8569342179298928456
+    second: Leap10
+  - first:
+      213: 1243455735255426142
+    second: Leap11
+  - first:
+      213: -8500365558116479939
+    second: Attack1
+  - first:
+      213: -130910747752057389
+    second: Attack2
+  - first:
+      213: 4899196532254069320
+    second: Attack3
+  - first:
+      213: -1123949347982087659
+    second: Attack4
+  - first:
+      213: 9071488530560178986
+    second: Attack5
+  - first:
+      213: 6297993721249169545
+    second: Attack6
+  - first:
+      213: 9162928316365078686
+    second: Attack7
+  - first:
+      213: 2436259984176343464
+    second: Attack8
+  - first:
+      213: -2295145231594315476
+    second: Move1
+  - first:
+      213: 114968383940640714
+    second: Move2
+  - first:
+      213: -4486669935759205724
+    second: Move3
+  - first:
+      213: 977769163979082832
+    second: Move4
+  - first:
+      213: 7762027054947344034
+    second: Move5
+  - first:
+      213: -7877593340490590186
+    second: Move6
+  - first:
+      213: 1175074403435300485
+    second: Move7
+  - first:
+      213: 5591223557201089243
+    second: Move8
+  - first:
+      213: 4242181752597672618
+    second: Damage1
+  - first:
+      213: -3958460635220995264
+    second: Damage2
+  - first:
+      213: 5387453199259900200
+    second: Damage3
+  - first:
+      213: -4537555300688890388
+    second: Damage4
+  - first:
+      213: 5079557945052357427
+    second: DamageHigh1
+  - first:
+      213: 2663430418560460419
+    second: DamageHigh2
+  - first:
+      213: 1981847860329916688
+    second: DamageHigh3
+  - first:
+      213: 23377799722317394
+    second: DamageHigh4
+  - first:
+      213: -3568462977117166759
+    second: Damage5
+  - first:
+      213: -1444048952730203345
+    second: Death1
+  - first:
+      213: -5971509623822601510
+    second: Death2
+  - first:
+      213: -9084612951478691132
+    second: Death3
+  - first:
+      213: -7590699708033590943
+    second: Death4
+  - first:
+      213: 5828945358843086473
+    second: Death5
+  - first:
+      213: -3076560854150318015
+    second: Death6
+  - first:
+      213: -9026627467595598957
+    second: Death7
+  - first:
+      213: -1589441538307828073
+    second: Death8
+  - first:
+      213: -5242085561228013932
+    second: Death9
+  - first:
+      213: -256839473766366490
+    second: Death10
+  - first:
+      213: 3362820203269511912
+    second: Emerge1
+  - first:
+      213: -6347150765209711626
+    second: Emerge2
+  - first:
+      213: -572566768612980124
+    second: Emerge3
+  - first:
+      213: -8900933645475433811
+    second: Emerge4
+  - first:
+      213: 5570640261809312005
+    second: Emerge5
+  - first:
+      213: -3600849618612474956
+    second: Emerge6
+  - first:
+      213: -5156964631393149569
+    second: Emerge7
+  - first:
+      213: -3486654106724601822
+    second: Emerge8
+  - first:
+      213: 8252528314613128088
+    second: Roar1
+  - first:
+      213: -1376339342024615428
+    second: Roar2
+  - first:
+      213: -616714753902680801
+    second: Roar3
+  - first:
+      213: 2085546846164904222
+    second: Roar4
+  - first:
+      213: -5740426747869261278
+    second: Roar5
+  - first:
+      213: 5670776761013168159
+    second: Roar6
+  - first:
+      213: 8869201774671682545
+    second: Roar7
+  - first:
+      213: 2608408282167110028
+    second: Roar8
+  - first:
+      213: -5817980276610602690
+    second: Idle1
+  - first:
+      213: -1299816427399727280
+    second: Idle2
+  - first:
+      213: -700663170160927166
+    second: Idle3
+  - first:
+      213: 7173124042900726583
+    second: Idle4
+  - first:
+      213: -416022237038818182
+    second: Idle5
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Emerge1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ead26b68232bae20800000000000000
+      internalID: 3362820203269511912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb83d7f1046ae7a0800000000000000
+      internalID: -6347150765209711626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a41aabe85dd08f0800000000000000
+      internalID: -572566768612980124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da23d143208897480800000000000000
+      internalID: -8900933645475433811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50112a8bdc3ee4d40800000000000000
+      internalID: 5570640261809312005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bba0099956370ec0800000000000000
+      internalID: -3600849618612474956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4dd1383ae8106820800000000000000
+      internalID: 2909352753525546319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489009c6df9e32fa0800000000000000
+      internalID: -5826556218229913212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d383ef0d588724a0800000000000000
+      internalID: -6618171194117749804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb19e6f12d3a1be0800000000000000
+      internalID: -1505823909316322377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2cc81cf01916c50800000000000000
+      internalID: 6656761221088068290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6348f70b478d8630800000000000000
+      internalID: 3930946806090318698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa66acd682f54dc0800000000000000
+      internalID: -3655248861499856135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b6e3e3319917160800000000000000
+      internalID: 7021561601975020402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75cd02e6c182e0550800000000000000
+      internalID: 6128880245469666391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106702c2fd8dbbac0800000000000000
+      internalID: -3838235804373584383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap10
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b89d14b0b4931980800000000000000
+      internalID: -8569342179298928456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leap11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 640
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5462d13764a14110800000000000000
+      internalID: 1243455735255426142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c808fcf82a80a80800000000000000
+      internalID: -8500365558116479939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d535f65e59ee2ef0800000000000000
+      internalID: -130910747752057389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84254ddf9417df340800000000000000
+      internalID: 4899196532254069320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aeeffd50ee660f0800000000000000
+      internalID: -1123949347982087659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2bd11871c664ed70800000000000000
+      internalID: 9071488530560178986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98082b8dbe7f66750800000000000000
+      internalID: 6297993721249169545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e900f47a1c2492f70800000000000000
+      internalID: 9162928316365078686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 512
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a964593c855fc120800000000000000
+      internalID: 2436259984176343464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21a3e272910620e0800000000000000
+      internalID: -2295145231594315476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acfbe25d223789100800000000000000
+      internalID: 114968383940640714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aad5aef6752cb1c0800000000000000
+      internalID: -4486669935759205724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ccd4bcfdbb19d00800000000000000
+      internalID: 977769163979082832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae9b134b7248bb60800000000000000
+      internalID: 7762027054947344034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6185317189a2da290800000000000000
+      internalID: -7877593340490590186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5864a61b1f3be4010800000000000000
+      internalID: 1175074403435300485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd254c2a334089d40800000000000000
+      internalID: 5591223557201089243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa27a34f3d14fda30800000000000000
+      internalID: 4242181752597672618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043194c6609b019c0800000000000000
+      internalID: -3958460635220995264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8299de9042414ca40800000000000000
+      internalID: 5387453199259900200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce57fb9be7d5701c0800000000000000
+      internalID: -4537555300688890388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageHigh1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333ebd2d9073e7640800000000000000
+      internalID: 5079557945052357427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageHigh2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386244eaad766f420800000000000000
+      internalID: 2663430418560460419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageHigh3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01925d1f020f08b10800000000000000
+      internalID: 1981847860329916688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DamageHigh4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25634182cfd035000800000000000000
+      internalID: 23377799722317394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Damage5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9536cce24d54a7ec0800000000000000
+      internalID: -3568462977117166759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2bcd3ed025b5fbe0800000000000000
+      internalID: -1444048952730203345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad23a33b2afe02da0800000000000000
+      internalID: -5971509623822601510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca133927a8fce180800000000000000
+      internalID: -9084612951478691132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1691ff135da68a690800000000000000
+      internalID: -7590699708033590943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9860109bbe294e050800000000000000
+      internalID: 5828945358843086473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1487f76143cdd45d0800000000000000
+      internalID: -3076560854150318015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3933e22b42afab280800000000000000
+      internalID: -9026627467595598957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79659e5975b21f9e0800000000000000
+      internalID: -1589441538307828073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49eccc0b4fe5047b0800000000000000
+      internalID: -5242085561228013932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death10
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e28bd10cd58f6cf0800000000000000
+      internalID: -256839473766366490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dde829df7ce68b0800000000000000
+      internalID: -5156964631393149569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Emerge8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220f502209aec9fc0800000000000000
+      internalID: -3486654106724601822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b5e5347ced68270800000000000000
+      internalID: 8252528314613128088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf95a3c19a246ece0800000000000000
+      internalID: -1376339342024615428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1563e5e23df077f0800000000000000
+      internalID: -616714753902680801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1968109ec951fc10800000000000000
+      internalID: 2085546846164904222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2221a127948e550b0800000000000000
+      internalID: -5740426747869261278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18eab84b65a2be40800000000000000
+      internalID: 5670776761013168159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbd194e50cb51b70800000000000000
+      internalID: 8869201774671682545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Roar8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 896
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89e1cf338de23420800000000000000
+      internalID: 2608408282167110028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39656e63c1624fa0800000000000000
+      internalID: -5817980276610602690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0573f9398df16fde0800000000000000
+      internalID: -1299816427399727280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24edb5b1f8eb646f0800000000000000
+      internalID: -700663170160927166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73369eaef4e0c8360800000000000000
+      internalID: 7173124042900726583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c43a6cafdf93af0800000000000000
+      internalID: -416022237038818182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death11
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6795ad2e60bbf90c0800000000000000
+      internalID: -4566725858880235146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

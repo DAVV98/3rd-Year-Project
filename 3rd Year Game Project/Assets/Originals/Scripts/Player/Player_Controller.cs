@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
     [Header("Health")]
-    private int health; // player health
-    
+    public int health; // player health
+    public int maxHealth;
+    public Image[] hearts;
+
     [Header("Turn")]
     public int turn = 1; // keeps track of turn - used for turn based powerups
     private int power_up_turn; // saves when latest speed power up used
@@ -37,15 +39,12 @@ public class Player_Controller : MonoBehaviour
     private float moveSpeed; // movement speed
     private float horizontalInput; // controller horizontal input
     public float air_movement_divider; // divides movespeed in air to allow for more realistic jump
-
+    public bool ice_ground;
 
 
     [Header("Jumping")]
     // grounding checks
     private bool isGrounded;
-    private bool L_Grounded;
-    private bool M_Grounded;
-    private bool R_Grounded;
 
     private float jumpForce; // force of jump
 
@@ -81,9 +80,9 @@ public class Player_Controller : MonoBehaviour
     [Header("Floor Start Point")]
     public Transform[] levels; // floor hubs
 
-
     [Header("Turn Timer")]
-    
+    public Image timerBar;
+    public bool canStartTurn;
     public bool timerStarted;
     public bool canMove; // checks if player is allowed to move
     public bool isMyTurn; // checks if it is players turn
@@ -91,6 +90,7 @@ public class Player_Controller : MonoBehaviour
     public bool endTurn; // checks if turn should end
     private int random_timer; // used from random turn lenght timer
     private float timer_length; // turn timer length
+
 
     private int min_time; // minimum turn length
     private int max_time; // maximum turn length
@@ -100,6 +100,7 @@ public class Player_Controller : MonoBehaviour
     public bool inLadderTrigger;
     public bool inPriceTrigger;
     
+
     
     // Settings
     Rigidbody2D rb;
@@ -133,6 +134,12 @@ public class Player_Controller : MonoBehaviour
 
         // sets variables controlled by GPC
         set_GPC_Vars();
+
+        // get image component from timer bar
+        timerBar = timerBar.GetComponent<Image>();
+
+        // set can start turn
+        canStartTurn = true;
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,6 +184,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     private void Update()
     {
+
         //only allow the functions if player turn.
         if (isMyTurn == true)
         {
@@ -187,14 +195,17 @@ public class Player_Controller : MonoBehaviour
         }
 
         // Gets horizontal input each frame, and sets this as a float variable
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        float hor_in = Input.GetAxisRaw("Horizontal");
 
-   
+        // rounds up/down input to avoid acceleration on movement.
+        if (hor_in > 0) horizontalInput = 1;
+        else if (hor_in < 0) horizontalInput = -1;
+        else horizontalInput = 0;
 
         // Sets UI Coins text accoridng to number of coins player posses.
-        //Coins_Text.text = coins.ToString();
+        Coins_Text.text = coins.ToString();
 
-        // changes player tag, depending on, if it is the players turn or not.
+            // changes player tag, depending on, if it is the players turn or not.
         tag_name();
    
 
@@ -213,6 +224,7 @@ public class Player_Controller : MonoBehaviour
         // Function that changes player animations depending on conditions
         setAnimations();
 
+        heart_containers();
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,13 +253,15 @@ public class Player_Controller : MonoBehaviour
     void tag_name()
     {
 
-        if (isMyTurn)
+        if (canMove)
         {
             gameObject.tag = "Player";
+            gameObject.layer = 11;
         }
         else
         {
             gameObject.tag = "Player_Sleep";
+            gameObject.layer = 14;
         }
 
 
@@ -309,6 +323,7 @@ public class Player_Controller : MonoBehaviour
     /// <summary>
     /// Function Movement(): 
     ///     - Allows horizontal movement if it is players turn
+    ///     - either slippy movment if on ice or controlled movment if on regular ground
     /// </summary>
     void Movement()
     {
@@ -317,14 +332,27 @@ public class Player_Controller : MonoBehaviour
 
         // if players turn allow movement.
         if (canMove == true)
-        {
-           
-           
-            // change horizontal velocity to move player.
-            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-            
-        
+        {   
+            // if on ice ground make movement slippy
+            if(ice_ground == true && isGrounded)
+            {
+                Vector2 ice_movement = new Vector2(horizontalInput * (moveSpeed - 2), 0);
 
+                if(rb.velocity.magnitude <= (moveSpeed * 3))
+                {
+                    rb.AddForce(ice_movement);
+                }
+             
+            }
+            // else use regular movement 
+            else
+            {
+                Debug.Log(horizontalInput);
+                // change horizontal velocity to move player.
+
+
+                rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);     
+            }
         }
         
     }
@@ -345,7 +373,6 @@ public class Player_Controller : MonoBehaviour
             // Get Jump Input, and if player grounded allow vertical movement
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
-                //rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
 
             }
@@ -368,13 +395,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void JumpGravity()
     {
-        // when no more positive vertical movement, adds fall mutiplier. 
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics.gravity * (fallMultiplier - 1) * Time.deltaTime; 
-        }
-        // whenpositive vertical movement but no jump input add low jump multiplier.
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -403,12 +424,13 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Grounding()
     {
+
         // Check mid grounding
-        M_Grounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
+        bool M_Grounded = Physics2D.Raycast(feetPos.position, Vector2.down, groundedRaycastLength, groundLayer);
         // Check left grounding
-        L_Grounded = Physics2D.Raycast(feetPos_L.position, Vector2.down, groundedRaycastLength, groundLayer);
+        bool L_Grounded = Physics2D.Raycast(feetPos_L.position, Vector2.down, groundedRaycastLength, groundLayer);
         // Check right grounding
-        R_Grounded = Physics2D.Raycast(feetPos_R.position, Vector2.down, groundedRaycastLength, groundLayer);
+        bool R_Grounded = Physics2D.Raycast(feetPos_R.position, Vector2.down, groundedRaycastLength, groundLayer);
 
         // if any grounded raycast true, allow jumping
         if (M_Grounded || L_Grounded || R_Grounded)
@@ -419,6 +441,8 @@ public class Player_Controller : MonoBehaviour
         {
             isGrounded = false;
         }
+
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -429,23 +453,31 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void startTurn()
     {
-        //if input is z timer start, turn start
-        if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
+        if(canStartTurn)
         {
-            // set random turn length. TODO set values from global player field.
-            random_timer = Random.Range(min_time, max_time);
+            //if input is z timer start, turn start
+            if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
+            {
+               
+                // set random turn length. TODO set values from global player field.
+                random_timer = Random.Range(min_time, max_time);
 
-            // set timer length
-            timer_length = random_timer;
+                // set timer length
+                timer_length = random_timer;
 
-            // set timer has started to true.
-            timerStarted = true;
+                // set timer has started to true.
+                timerStarted = true;
 
-            // Allow player to move.
-            canMove = true;
+                // Allow player to move.
+                canMove = true;
 
-            turn++; // increments turn
+                turn++; // increments turn
+
+                // set so you cannot start turn again
+                canStartTurn = false;
+            }
         }
+       
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -460,7 +492,9 @@ public class Player_Controller : MonoBehaviour
         if (timerStarted == true)
         {
             timer_length -= (1.0f * Time.deltaTime);
-            //countdown_text.text = (timer_length + 1).ToString("0");
+            countdown_text.text = (timer_length + 1).ToString("0");
+
+            timerBar.fillAmount = timer_length / random_timer;
 
             // allow movement if timer is counting
             if (timer_length > -1)
@@ -476,6 +510,9 @@ public class Player_Controller : MonoBehaviour
                 timerStarted = false;
                 // turn over.
                 endTurn = true;
+
+                // allow so player can start turn next go.
+                canStartTurn = true;
             }
         }
     }
@@ -518,9 +555,8 @@ public class Player_Controller : MonoBehaviour
         // if attack time is zero allow attack
         if (timeBetweenAttack <= 0)
         {
-
             // if attack button pressed
-            if (Input.GetKeyDown("joystick button 5"))
+            if (Input.GetKeyDown("joystick button 5") || Input.GetKey("z"))
             {
                 // player is attack 
                 isAttacking = true;
@@ -679,7 +715,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         // if collecting health power up
-        if(collision.gameObject.tag == "Health_Up")
+        if (collision.gameObject.tag == "Health_Up" && health <= maxHealth)
         {
             // increase health by one
             health += 1;
@@ -688,6 +724,23 @@ public class Player_Controller : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
     }
+
+    void heart_containers()
+    {
+        for(int i = 0; i <= hearts.Length; i++)
+        {
+            if (health >= i + 1)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        
+    }
+
 
     /// <summary>
     /// Function OnTriggerExit2D(): 

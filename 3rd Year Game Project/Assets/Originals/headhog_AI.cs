@@ -15,11 +15,12 @@ public class headhog_AI : MonoBehaviour
     public bool zoom;
     private float moveSpeed; // movement speed
     private bool isMoving;
+    public Rigidbody2D rb;
 
     [Header("Animator")]
     public Animator animator;
 
-    private GameObject[] players;
+    private GameObject[] players; // list of players
 
 
     private bool movingRight;
@@ -43,6 +44,8 @@ public class headhog_AI : MonoBehaviour
 
         speed_up();
     }
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Function: Patrol
@@ -54,16 +57,22 @@ public class headhog_AI : MonoBehaviour
         // if player moving right move towards end
         if(movingRight)
         {
-            transform.position = new Vector2(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y); // increment x pos to move right
+            //transform.position = new Vector2(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y); // increment x pos to move right
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0)); //makes enemy look right
+
+            rb.velocity = new Vector2(moveSpeed * 1, rb.velocity.y);
         }
         // if player is not moving right go towards starts
         else
         {
-            transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y); // reduce x pos to move left
+            //transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y); // reduce x pos to move left
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0)); // makes enemy look left
+
+            rb.velocity = new Vector2(moveSpeed * -1, rb.velocity.y);
         }
     }
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Function: setBool
@@ -83,6 +92,8 @@ public class headhog_AI : MonoBehaviour
             movingRight = true; // makes player move right
         }
     }
+    
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Function: Animation_HH
@@ -100,6 +111,8 @@ public class headhog_AI : MonoBehaviour
         // Set move animation
         animator.SetBool("isRunning", isMoving); // set animation to running if running
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
     /// Function: speed_up

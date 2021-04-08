@@ -22,6 +22,9 @@ TagManager:
   - Player_Sleep
   - Speed_Up
   - Health_Up
+  - Egg_Damage
+  - Egg_Slow
+  - Egg_Gold
   layers:
   - Default
   - TransparentFX
@@ -36,9 +39,9 @@ TagManager:
   - Jumpable
   - Player
   - coin_block
-  - 
-  - 
-  - 
+  - ice_ground
+  - player_sleep
+  - HH
   - 
   - 
   - 

@@ -23,6 +23,7 @@ public class projectile : MonoBehaviour
     }
     void FixedUpdate()
     {
+
         if (right)
         {
             // when lauched go right

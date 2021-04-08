@@ -5,81 +5,109 @@ using UnityEngine;
 public class shooting_rotator : MonoBehaviour
 {
     [Header("Players")]
-    private GameObject[] players;
-    public GameObject curr_player;
+    private GameObject[] players; // list of players in game
 
     [Header("Target Mechanism")]
-    public float attack_dist;
+    public float attack_dist; // max attack range
 
     [Header("Dart")]
-    public GameObject dart;
-    public Transform dart_start;
-    public GameObject shoot_Direction;
-    public float dart_force;
+    public GameObject dart; // shooting prefab
+    public Transform dart_start; // pos projectile shoots from
+    public GameObject shoot_Direction; // shooting direction
+    public float dart_force; // force of shot
 
     [Header("Shooting Timer")]
-    public float time_between_shots;
-    private float timer;
+    public float time_between_shots; //time between shots
+    private float timer; // shoot timer
 
-    // Start is called before the first frame update
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function Start():
+    ///     - Runs at the start of the run time
+    ///     - Used for Player set up.
+    /// </summary>
     void Start()
     {
-        // set timer
+        // set initial timer lenght timer
         timer = time_between_shots;
 
     }
 
-    // Update is called once per frame
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function Update():
+    ///     - Runs at every frame
+    ///     - Used to update player.
+    /// </summary>
     void Update()
     {
+        // adds active players to player list
         players = GameObject.FindGameObjectsWithTag("Player");
 
+        // aims and shoots
         aim_shoot();
 
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function aim_shoot():
+    ///     - Find angle to player
+    ///     - Fire if timer 0
+    /// </summary>
     void aim_shoot()
     {
 
         // Loop through players in game
         for (int i = 0; i < players.Length; i++)
         {
-            // check distance to each players
+            // check distance to each player
             float dist = Vector3.Distance(transform.position, players[i].transform.position);
-            //transform.rotation = Quaternion.Euler(0, 0, 0);
 
+            // check distance to player is less than attack distance 
+            // if so attack
             if (dist <= attack_dist)
             {
+                // Trigonometry to calculate angle to fire - Diagram in report
                 float hyp = dist;
                 float adj = this.transform.position.y - players[i].transform.position.y;
-
                 float cos = adj / hyp;
-
                 float inv_cos = Mathf.Acos(cos);
-
                 float angle_deg = inv_cos * Mathf.Rad2Deg;
 
+                // if player to the right negative angle
                 if (players[i].transform.position.x <= this.transform.position.x)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, -angle_deg);
                 }
+                // if player to right positve angle
                 else
                 {
                     transform.rotation = Quaternion.Euler(0, 0, angle_deg);
                 }
 
+                // if timer at 0 - fire
                 if (timer <= 0)
                 {
+                    // instantiate projectile
                     GameObject dart_objects = Instantiate(dart, dart_start.position, Quaternion.identity);
 
+                    // direction to fire
                     Vector3 Direction = (shoot_Direction.transform.position - this.transform.position).normalized;
 
+                    // make projectile fire
                     dart_objects.GetComponent<Rigidbody2D>().AddForce(Direction.normalized * dart_force, ForceMode2D.Impulse);
                    
+                    // reset timer
                     timer = time_between_shots;
                 }
+                // if timer at > 0
                 else
                 {
+                    //reduce timer by a second
                     timer -= Time.deltaTime;
                 }
 

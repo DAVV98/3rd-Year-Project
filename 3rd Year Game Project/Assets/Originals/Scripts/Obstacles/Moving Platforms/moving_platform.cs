@@ -163,7 +163,7 @@ public class moving_platform : MonoBehaviour
     {
         // if collision with player or stop_projectile block:
         //      - Set platform as parent so children move with platform
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Stop_Projectiles")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player_Sleep" || collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(transform);
         }
@@ -185,7 +185,7 @@ public class moving_platform : MonoBehaviour
         // if collision with player or stop_projectile block stops:
         //      - Remove platform as parent
 
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Stop_Projectiles")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player_Sleep"|| collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(null);
         }
