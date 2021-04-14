@@ -10,6 +10,12 @@ public class Player_Controller : MonoBehaviour
     public int maxHealth;
     public Image[] hearts;
 
+    [Header("Current_Chunk")]
+    public int current_chunk;
+    public int number_chunks;
+    public GameObject Map;
+    public bool map_mid_turn;
+
     [Header("Turn")]
     public int turn = 1; // keeps track of turn - used for turn based powerups
     private int power_up_turn; // saves when latest speed power up used
@@ -138,8 +144,9 @@ public class Player_Controller : MonoBehaviour
         // get image component from timer bar
         timerBar = timerBar.GetComponent<Image>();
 
-        // set can start turn
         canStartTurn = true;
+        map_mid_turn = false;
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -225,6 +232,8 @@ public class Player_Controller : MonoBehaviour
         setAnimations();
 
         heart_containers();
+
+        show_map();
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -456,7 +465,7 @@ public class Player_Controller : MonoBehaviour
         if(canStartTurn)
         {
             //if input is z timer start, turn start
-            if (Input.GetKey("z") && isMyTurn && !nextPlayer || Input.GetKeyDown("joystick button 0") && isMyTurn && !nextPlayer)
+            if (Input.GetKey("z") && isMyTurn|| Input.GetKeyDown("joystick button 0") && isMyTurn)
             {
                
                 // set random turn length. TODO set values from global player field.
@@ -511,8 +520,7 @@ public class Player_Controller : MonoBehaviour
                 // turn over.
                 endTurn = true;
 
-                // allow so player can start turn next go.
-                canStartTurn = true;
+                canStartTurn = false;
             }
         }
     }
@@ -723,11 +731,20 @@ public class Player_Controller : MonoBehaviour
             // deactivate power up asset
             collision.gameObject.SetActive(false);
         }
+
+        for(int i = 1; i <= number_chunks; i++)
+        {
+            if (collision.gameObject.name == "Chunk Collider " + i)
+            {
+                current_chunk = i;
+            }
+        }
+       
     }
 
     void heart_containers()
     {
-        for(int i = 0; i <= hearts.Length; i++)
+        for(int i = 0; i <= 3; i++)
         {
             if (health >= i + 1)
             {
@@ -735,12 +752,35 @@ public class Player_Controller : MonoBehaviour
             }
             else
             {
-                hearts[i].enabled = false;
+               hearts[i].enabled = false;
             }
         }
         
     }
 
+    void show_map()
+    {
+        if(canMove)
+        {
+            if (Input.GetKey("m"))
+            {
+                Map.SetActive(true);
+            }
+            else
+            {
+                Map.SetActive(false);
+            }
+        }
+        else if (map_mid_turn)
+        {
+            Map.SetActive(true);
+        }
+        else
+        {
+            Map.SetActive(false);
+        }
+
+    }
 
     /// <summary>
     /// Function OnTriggerExit2D(): 
