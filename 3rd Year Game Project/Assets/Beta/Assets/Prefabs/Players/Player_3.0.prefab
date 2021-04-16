@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1203213307046614953}
   - component: {fileID: 807512959}
   m_Layer: 11
-  m_Name: Player_2
+  m_Name: Player_4
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 4d04590c7edcd0e409f14b4a762c35ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b076dcd2b21d204786e134c2188a2ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,6 +153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845feb1a1f718b94fa6aeb8abd38c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 4
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  current_chunk: 0
+  number_chunks: 21
+  Map: {fileID: 0}
+  map_mid_turn: 0
   turn: 1
   GPC_Object: {fileID: 0}
   animator: {fileID: 1203213307046614953}
@@ -162,7 +173,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1203213306896994676}
   enemiesHit:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 16384
   blocksHit:
     serializedVersion: 2
     m_Bits: 4096
@@ -188,6 +199,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  timerBar: {fileID: 0}
+  canStartTurn: 0
   timerStarted: 0
   canMove: 0
   isMyTurn: 0
@@ -206,7 +219,7 @@ Animator:
   m_GameObject: {fileID: 1203213307046614952}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 445757cd6cd1f534b92ed9f5f2731c4b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 644c83625cbb6124eb0db1e7dbd24290, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

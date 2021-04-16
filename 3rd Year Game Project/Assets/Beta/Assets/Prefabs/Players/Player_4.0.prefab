@@ -153,6 +153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845feb1a1f718b94fa6aeb8abd38c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 4
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  current_chunk: 0
+  number_chunks: 21
+  Map: {fileID: 0}
+  map_mid_turn: 0
   turn: 1
   GPC_Object: {fileID: 0}
   animator: {fileID: 1203213307046614953}
@@ -162,7 +173,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1203213306896994676}
   enemiesHit:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 16384
   blocksHit:
     serializedVersion: 2
     m_Bits: 4096
@@ -188,6 +199,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  timerBar: {fileID: 0}
+  canStartTurn: 0
   timerStarted: 0
   canMove: 0
   isMyTurn: 0
@@ -332,7 +345,7 @@ GameObject:
   - component: {fileID: 3843884896097652382}
   - component: {fileID: 3531450792255078419}
   - component: {fileID: 741379307732844644}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Ground_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

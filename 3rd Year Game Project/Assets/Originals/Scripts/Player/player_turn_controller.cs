@@ -29,10 +29,20 @@ public class player_turn_controller : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-  
+        
+       
+        if (player_select_controller.active_players == 2)
+        {
+            System.Array.Resize(ref players, players.Length - 1);
+            System.Array.Resize(ref players, players.Length - 1);
+        }
+        else if (player_select_controller.active_players == 3)
+        {
+            System.Array.Resize(ref players, players.Length - 1);
+        }
+
         // Used to randomly select which player starts the game
         start_player = Random.Range(0, players.Length);
-
 
     }
 
@@ -85,6 +95,7 @@ public class player_turn_controller : MonoBehaviour
         // Run camera controller
         camera_controller();
     }
+
 
     /// <summary>
     /// Function next(): 

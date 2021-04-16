@@ -1590,6 +1590,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1385577871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &157342649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157342648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1ec98a804b9994e8352aecaafd8674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players_necessary: 4
 --- !u!1 &174599228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,81 +2751,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_3
       objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614952, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614953, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6ce2ddfeecc3f684fa55803c58ef5eb6, type: 2}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: hearts.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: GPC_Object
-      value: 
-      objectReference: {fileID: 2025900754}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: maxHealth
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: number_chunks
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[0]
-      value: 
-      objectReference: {fileID: 580680817}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[1]
-      value: 
-      objectReference: {fileID: 971684423}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[2]
-      value: 
-      objectReference: {fileID: 526276908}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: countdown_text
-      value: 
-      objectReference: {fileID: 235422234}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: Coins_Text
-      value: 
-      objectReference: {fileID: 1542086668}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: levels.Array.data[0]
-      value: 
-      objectReference: {fileID: 590312073}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: levels.Array.data[1]
-      value: 
-      objectReference: {fileID: 5627638}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: levels.Array.data[2]
-      value: 
-      objectReference: {fileID: 1434800727}
-    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: timerBar
-      value: 
-      objectReference: {fileID: 778962095}
     - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
         type: 3}
       propertyPath: hearts.Array.data[0]
@@ -2840,15 +2778,54 @@ PrefabInstance:
       objectReference: {fileID: 539177722}
     - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
         type: 3}
-      propertyPath: enemiesHit.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614957, guid: feb07899719dd3a42886af280330bc9c,
-        type: 3}
-      propertyPath: m_Sprite
+      propertyPath: GPC_Object
       value: 
-      objectReference: {fileID: 21300000, guid: 94b8ecd7f7c46854faa0ca448ac48fc2,
+      objectReference: {fileID: 2025900754}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
         type: 3}
+      propertyPath: level_max_jump.Array.data[0]
+      value: 
+      objectReference: {fileID: 580680817}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: level_max_jump.Array.data[1]
+      value: 
+      objectReference: {fileID: 971684423}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: level_max_jump.Array.data[2]
+      value: 
+      objectReference: {fileID: 526276908}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: Coins_Text
+      value: 
+      objectReference: {fileID: 1542086668}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: countdown_text
+      value: 
+      objectReference: {fileID: 235422234}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 590312073}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 5627638}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: levels.Array.data[2]
+      value: 
+      objectReference: {fileID: 1434800727}
+    - target: {fileID: 1203213307046614954, guid: feb07899719dd3a42886af280330bc9c,
+        type: 3}
+      propertyPath: timerBar
+      value: 
+      objectReference: {fileID: 778962095}
     - target: {fileID: 1203213307046614958, guid: feb07899719dd3a42886af280330bc9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7658,6 +7635,7 @@ GameObject:
   - component: {fileID: 878863996}
   - component: {fileID: 878863995}
   - component: {fileID: 878863994}
+  - component: {fileID: 878863997}
   m_Layer: 0
   m_Name: Canvas_P3
   m_TagString: Untagged
@@ -7754,6 +7732,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 501
   m_TargetDisplay: 0
+--- !u!114 &878863997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878863992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1ec98a804b9994e8352aecaafd8674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players_necessary: 3
 --- !u!1 &880681975
 GameObject:
   m_ObjectHideFlags: 0
@@ -11644,26 +11635,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_4
       objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614952, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614953, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 644c83625cbb6124eb0db1e7dbd24290, type: 2}
-    - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: hearts.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: maxHealth
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
         type: 3}
       propertyPath: hearts.Array.data[0]
@@ -11684,11 +11655,6 @@ PrefabInstance:
       propertyPath: hearts.Array.data[3]
       value: 
       objectReference: {fileID: 50381980}
-    - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: number_chunks
-      value: 21
-      objectReference: {fileID: 0}
     - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
         type: 3}
       propertyPath: Map
@@ -11744,17 +11710,6 @@ PrefabInstance:
       propertyPath: timerBar
       value: 
       objectReference: {fileID: 1303645432}
-    - target: {fileID: 1203213307046614954, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: enemiesHit.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614957, guid: 9ce66ff993916a24993171e11ad39974,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7b076dcd2b21d204786e134c2188a2ec,
-        type: 3}
     - target: {fileID: 1203213307046614958, guid: 9ce66ff993916a24993171e11ad39974,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13664,6 +13619,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 318637436}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1665726754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665726753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1ec98a804b9994e8352aecaafd8674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players_necessary: 3
 --- !u!1 &1668759722
 GameObject:
   m_ObjectHideFlags: 0
@@ -13706,6 +13674,7 @@ GameObject:
   - component: {fileID: 1670800183}
   - component: {fileID: 1670800182}
   - component: {fileID: 1670800181}
+  - component: {fileID: 1670800184}
   m_Layer: 0
   m_Name: Canvas_P4
   m_TagString: Untagged
@@ -13802,6 +13771,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 501
   m_TargetDisplay: 0
+--- !u!114 &1670800184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670800179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1ec98a804b9994e8352aecaafd8674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players_necessary: 4
 --- !u!1 &1687610194
 GameObject:
   m_ObjectHideFlags: 0
@@ -16986,86 +16968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_2
       objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614952, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: hearts.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: GPC_Object
-      value: 
-      objectReference: {fileID: 2025900754}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[0]
-      value: 
-      objectReference: {fileID: 580680817}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[1]
-      value: 
-      objectReference: {fileID: 971684423}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: level_max_jump.Array.data[2]
-      value: 
-      objectReference: {fileID: 526276908}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: levels.Array.data[0]
-      value: 
-      objectReference: {fileID: 590312073}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: levels.Array.data[1]
-      value: 
-      objectReference: {fileID: 5627638}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: levels.Array.data[2]
-      value: 
-      objectReference: {fileID: 1434800727}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: startTimeBetweenAttacks
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: player_layer.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: player_sleep_layer.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: Coins_Text
-      value: 
-      objectReference: {fileID: 287172456}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: countdown_text
-      value: 
-      objectReference: {fileID: 434566083}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: timerBar
-      value: 
-      objectReference: {fileID: 1345323965}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: maxHealth
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
       propertyPath: hearts.Array.data[0]
@@ -17088,24 +16990,59 @@ PrefabInstance:
       objectReference: {fileID: 1352131607}
     - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
-      propertyPath: number_chunks
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
       propertyPath: Map
       value: 
       objectReference: {fileID: 853375939}
     - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
-      propertyPath: map_mid_turn
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: GPC_Object
+      value: 
+      objectReference: {fileID: 2025900754}
     - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
-      propertyPath: enemiesHit.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
+      propertyPath: level_max_jump.Array.data[0]
+      value: 
+      objectReference: {fileID: 580680817}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: level_max_jump.Array.data[1]
+      value: 
+      objectReference: {fileID: 971684423}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: level_max_jump.Array.data[2]
+      value: 
+      objectReference: {fileID: 526276908}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: Coins_Text
+      value: 
+      objectReference: {fileID: 287172456}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: countdown_text
+      value: 
+      objectReference: {fileID: 434566083}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 590312073}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 5627638}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: levels.Array.data[2]
+      value: 
+      objectReference: {fileID: 1434800727}
+    - target: {fileID: 1203213307046614954, guid: b1a5a8329620a8447ac84f976c2706c0,
+        type: 3}
+      propertyPath: timerBar
+      value: 
+      objectReference: {fileID: 1345323965}
     - target: {fileID: 1203213307046614958, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17159,26 +17096,6 @@ PrefabInstance:
     - target: {fileID: 1203213307046614958, guid: b1a5a8329620a8447ac84f976c2706c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614958, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203213307046614958, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625930269261322985, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625930269261322985, guid: b1a5a8329620a8447ac84f976c2706c0,
-        type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
