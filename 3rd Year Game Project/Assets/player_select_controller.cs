@@ -64,7 +64,7 @@ public class player_select_controller : MonoBehaviour
         // if start game called change scene
         if (Input.GetButtonDown("Button_One"))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
     }

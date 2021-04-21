@@ -5,7 +5,9 @@ using UnityEngine;
 public class camera_follow_player : MonoBehaviour
 {
     [Header("Target_Player")]
-    public GameObject target; // target the camera will follow
+    public Transform target; // target the camera will follow
+    [Range(10,20)]
+    public float smoothSpeed;
     public float camYpos; // y axis position camera, will be center of level player. 
 
     [Header("Offset")]
@@ -18,7 +20,8 @@ public class camera_follow_player : MonoBehaviour
         camYpos = target.GetComponent<Player_Controller>().camY;
     }
 
-    void LateUpdate()
+    // runs right after update.
+    void FixedUpdate()
     {
 
         // set desired position
@@ -26,9 +29,11 @@ public class camera_follow_player : MonoBehaviour
         // y_pos = level center
         Vector3 desiredPos = new Vector3(target.transform.position.x + x_offset, camYpos, -20);
 
+        Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
+
 
         // make camera follow desired position
-        transform.position = desiredPos;
+        transform.position = smoothedPos;
         
         
     }

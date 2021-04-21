@@ -5,22 +5,22 @@ using UnityEngine;
 public class Chunk_Controller : MonoBehaviour
 {
     [Header("Level Settings")]
-    public int floor_length;
+    public int floor_length; // length of floor
 
     [Header("Load Chunks")]
-    public GameObject ladder_chunk;
+    public GameObject ladder_chunk; 
     public GameObject start_chunk;
     public GameObject end_chunk;
 
 
     [Header("Add Snake and/or Ladder")]
-    public bool addLadder;
+    public bool addLadder; // adds ladder chunk to floor
 
     [Header("Snake & Ladder Randomiser")]
     public int randomStart_L; // starting range of ladder chunk position (inclusive)
     public int randomEnd_L; // ending range of snake chunk position (exclusive)
-    private int random_L;
-    private int Ladder_Pos;
+    private int random_L; // the point where ladder instantiates
+    private int Ladder_Pos; //
 
     [Header("Chunk List")]
     public GameObject[] play_chunks;
@@ -28,22 +28,29 @@ public class Chunk_Controller : MonoBehaviour
     [Header("Chunk Seperation")]
     public int chunk_seperation;
 
+    // runs before start
     void Awake()
     {
-        // Randomise list of possible chunks to have arandomised floor level
+        // randomises Play_chunks array, so chunks are placed in random order
         randomizeArray(play_chunks);
     }
     void Start()
     {
-        // Set position of snake and ladder chunk if exists.
+        // set the position for the ladder chunks
         S_L_Pos();
 
-        // Load chunks 
+        // instantiates all chunks
         load_chunks();
 
 
     }
 
+    /// <summary>
+    /// function load_chunks():
+    ///     - load start and end chunks
+    ///     - adds ladder chunk
+    ///     - fills the rest of the positions with play chunks
+    /// </summary>
     void load_chunks()
     {
         // instatiate start chunk at beggining of level
@@ -59,8 +66,6 @@ public class Chunk_Controller : MonoBehaviour
         // - For loop that instatiates chunks to create floor
         for (int i = 1; i < floor_length; i++)
         {
-
-
             // If ladder chunk exists, dont instantiate from list at that pos but do elsewhere.
             if (addLadder)
             {
@@ -73,7 +78,13 @@ public class Chunk_Controller : MonoBehaviour
         }
     }
 
-    // Shuffles values of array randomly: used for randmoised array
+    /// <summary>
+    /// function randomizeArray(GameObject[] a):
+    ///     Paramater:
+    ///     - a = array to shuffle
+    ///     Job:
+    ///     - shuffles the array positions
+    /// </summary>
     void randomizeArray(GameObject[] a)
     {
         for(int i = 0; i < a.Length; i++ )
@@ -85,10 +96,15 @@ public class Chunk_Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// function S_L_Pos():
+    ///     - creates a random point between rwo values for ladder chunk to be placed.
+    /// </summary>
     void S_L_Pos()
     {
-        // Set Position of ladder.
+        // get random value
         random_L = Random.Range(randomStart_L, randomEnd_L);
+        // ladder pos is random value * size of chunks
         Ladder_Pos = random_L * chunk_seperation;
     }
 }

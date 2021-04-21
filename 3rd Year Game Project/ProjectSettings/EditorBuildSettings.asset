@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Beta/Beta_Test_Build/Title_Screen.unity
+    guid: c6b2e5e5b38913846a282f737d0ee95a
+  - enabled: 1
     path: Assets/Beta/Beta_Test_Build/Number_Players.unity
     guid: 336e181df95dce245a77f47e65a362cf
   - enabled: 1

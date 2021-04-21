@@ -164,8 +164,9 @@ GameObject:
   - component: {fileID: 5878371885541225403}
   - component: {fileID: 5878371885541225280}
   - component: {fileID: 1829086027}
+  - component: {fileID: 7970448744281745910}
   m_Layer: 11
-  m_Name: Player_1
+  m_Name: Player_1.0
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5878371885541225402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.28, y: 3.23, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children:
   - {fileID: 5878371885737483543}
@@ -268,11 +269,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5878371885541225402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 845feb1a1f718b94fa6aeb8abd38c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  hearts: []
+  current_chunk: 0
+  number_chunks: 0
+  Map: {fileID: 0}
+  map_mid_turn: 0
   turn: 1
   GPC_Object: {fileID: 0}
   animator: {fileID: 5878371885541225280}
@@ -308,6 +316,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  timerBar: {fileID: 0}
+  canStartTurn: 0
   timerStarted: 0
   canMove: 0
   isMyTurn: 0
@@ -351,6 +361,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.05}
   m_Size: {x: 0.75, y: 0.8}
   m_Direction: 0
+--- !u!114 &7970448744281745910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878371885541225402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c93954c97f92eb14e907f2726e93d7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 0}
+  end: {fileID: 0}
+  move_Speed: 0
+  animator: {fileID: 0}
 --- !u!1 &5878371885737483542
 GameObject:
   m_ObjectHideFlags: 0
