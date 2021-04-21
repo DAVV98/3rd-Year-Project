@@ -49,7 +49,8 @@ public class projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Stop_Projectiles")
+        // destroy projectile if collision with projectile destroyer
+        if(collision.gameObject.tag == "Stop_Projectiles" || collision.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
         }

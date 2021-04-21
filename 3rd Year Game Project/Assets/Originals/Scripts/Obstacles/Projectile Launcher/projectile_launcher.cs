@@ -9,38 +9,32 @@ public class projectile_launcher : MonoBehaviour
     private float timer;
 
     [Header("Projectiles")]
-    public GameObject projectile;
-    private GameObject clone;
-    public Transform launch_pos;
+    public GameObject projectile; // projectile ejcted from launcher
+    private GameObject clone; // clone of projectile
+    public Transform launch_pos; // position to launch projectile from
 
-    // Start is called before the first frame update
-    void Start()
+    // awake called before game starts
+    // called here object transforms before first instantiation
+    void awake()
     {
-        timer = time_between_shots;
-        clone = (GameObject)Instantiate(projectile);
+        timer = time_between_shots; // set timer to time between shots
+        clone = (GameObject)Instantiate(projectile); // clone projectile
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer <= 0)
+        // shoot timer
+        // only shoot when timer at zero
+        // else timer --
+        if (timer <= 0)
         {
-            Instantiate(clone, launch_pos.position, Quaternion.identity);
-            timer = time_between_shots;
+            Instantiate(projectile, launch_pos.position, Quaternion.identity); // instaniate projectile
+            timer = time_between_shots; // timer = start time
         }
         else
         {
-            timer -= Time.deltaTime;
-        }
-
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Stop_Projectiles")
-        {
-            Destroy(this.gameObject);
+            timer -= Time.deltaTime; // reduce timer 
         }
     }
 }

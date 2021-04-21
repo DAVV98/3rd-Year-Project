@@ -97,6 +97,11 @@ public class Player_Controller : MonoBehaviour
     private int random_timer; // used from random turn lenght timer
     private float timer_length; // turn timer length
 
+    [Header("Explosion Effect")]
+    public ParticleSystem explosion;
+    public Transform exp_pos;
+
+
 
     private int min_time; // minimum turn length
     private int max_time; // maximum turn length
@@ -356,10 +361,8 @@ public class Player_Controller : MonoBehaviour
             // else use regular movement 
             else
             {
-                Debug.Log(horizontalInput);
+
                 // change horizontal velocity to move player.
-
-
                 rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);     
             }
         }
@@ -693,12 +696,14 @@ public class Player_Controller : MonoBehaviour
             // if health = 0, send to level hub
             if(health <= 0)
             {
-                this.transform.position = levels[level - 1].transform.position;
+                this.transform.position = levels[level - 1].transform.position;           
             }
             // deduct health
             else
             {
                 health--;
+                Instantiate(explosion, exp_pos);
+                explosion.Play();
             }
       
         }
@@ -802,6 +807,12 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.tag == "Ladder_Price")
         {
             inPriceTrigger = false;
+        }
+
+        // On coliison exit with projectile stop explosion particle effect
+        if (collision.gameObject.tag == "Projectile")
+        {
+            explosion.Stop();
         }
     }
 

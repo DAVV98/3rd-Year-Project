@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &586026794949422717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6859362348691985368}
+  m_Layer: 11
+  m_Name: mid_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6859362348691985368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586026794949422717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1203213307046614958}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203213306896994675
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +75,7 @@ GameObject:
   - component: {fileID: 1203213307046614953}
   - component: {fileID: 807512959}
   m_Layer: 11
-  m_Name: Player_3
+  m_Name: Player_2.0
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +97,7 @@ Transform:
   - {fileID: 1203213307914958118}
   - {fileID: 1203213306896994676}
   - {fileID: 3843884896097652382}
+  - {fileID: 6859362348691985368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -206,6 +237,9 @@ MonoBehaviour:
   isMyTurn: 0
   nextPlayer: 0
   endTurn: 0
+  explosion: {fileID: 7346070874912373018, guid: 58f6240c1ddde3f4b9dfaceb486f7d5c,
+    type: 3}
+  exp_pos: {fileID: 6859362348691985368}
   useObj: 0
   inLadderTrigger: 0
   inPriceTrigger: 0
