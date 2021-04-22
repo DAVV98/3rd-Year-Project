@@ -15,6 +15,7 @@ public class Player_Controller : MonoBehaviour
     public int number_chunks;
     public GameObject Map;
     public bool map_mid_turn;
+    public bool is_at_hub;
 
     [Header("Turn")]
     public int turn = 1; // keeps track of turn - used for turn based powerups
@@ -83,8 +84,13 @@ public class Player_Controller : MonoBehaviour
     [Header("Current Floor")]
     private int level; // checks what current floor is
 
-    [Header("Floor Start Point")]
+    [Header("Floor Transitions")]
     public Transform[] levels; // floor hubs
+    public bool transition_cam;
+    public bool start_transition;
+    public float transition_cam_Ypos;
+    public float transition_timer;
+    private float curr_transition_timer;
 
     [Header("Turn Timer")]
     public Image timerBar;
@@ -151,6 +157,8 @@ public class Player_Controller : MonoBehaviour
 
         canStartTurn = true;
         map_mid_turn = false;
+
+        curr_transition_timer = transition_timer;
 
     }
 
@@ -239,6 +247,8 @@ public class Player_Controller : MonoBehaviour
         heart_containers();
 
         show_map();
+
+        transition();
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -639,6 +649,29 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    void transition()
+    {
+        if(start_transition)
+        {
+            if (curr_transition_timer <= 0)
+            {
+                transition_cam = false;
+                this.transform.position = levels[level].transform.position;
+                curr_transition_timer = transition_timer;
+                start_transition = false;
+
+
+            }
+            else
+            {
+                transition_cam = true;
+                transition_cam_Ypos = levels[level].transform.position.y;
+                curr_transition_timer -= Time.deltaTime;
+
+            }
+        }
+     
+    }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -667,7 +700,7 @@ public class Player_Controller : MonoBehaviour
         // Move to next floor hub when reaching end of level
         if (collision.gameObject.tag == "Level_End")
         {
-           this.transform.position = levels[level].transform.position;
+            start_transition = true;
         }
 
         // Check what level player is on and change level var depending on floor.
@@ -737,7 +770,15 @@ public class Player_Controller : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
 
-        for(int i = 1; i <= number_chunks; i++)
+        // check if at floor hub
+        if (collision.gameObject.tag == "Hub")
+        {
+            // increase health by one
+            is_at_hub = true;
+        }
+  
+
+        for (int i = 1; i <= number_chunks; i++)
         {
             if (collision.gameObject.name == "Chunk Collider " + i)
             {
@@ -813,6 +854,13 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             explosion.Stop();
+        }
+
+        // check if at floor hub
+        if (collision.gameObject.tag == "Hub")
+        {
+            // increase health by one
+            is_at_hub = false;
         }
     }
 

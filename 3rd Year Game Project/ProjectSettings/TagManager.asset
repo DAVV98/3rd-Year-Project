@@ -25,6 +25,8 @@ TagManager:
   - Egg_Damage
   - Egg_Slow
   - Egg_Gold
+  - Hub
+  - cloud_stopper
   layers:
   - Default
   - TransparentFX
