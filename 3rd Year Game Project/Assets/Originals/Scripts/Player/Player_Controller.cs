@@ -91,6 +91,9 @@ public class Player_Controller : MonoBehaviour
     public float transition_cam_Ypos;
     public float transition_timer;
     private float curr_transition_timer;
+    public bool canUseLadder;
+    public bool ladderUsed;
+    public bool canTeleport;
 
     [Header("Turn Timer")]
     public Image timerBar;
@@ -549,16 +552,17 @@ public class Player_Controller : MonoBehaviour
     void useLadder()
     {
         // Get input for use object
-        if (Input.GetKeyDown("a") && inLadderTrigger || Input.GetKeyDown("joystick button 4") && inLadderTrigger)
+        if (Input.GetKeyDown("y") && canUseLadder || Input.GetKeyDown("joystick button 4") && canUseLadder)
         {
             // checks if player can affors use of ladder
             if (coins >= ladderPrice)
-            {
-                // transforms player position to next floor
-                this.transform.position = levels[level].transform.position;
-                
+            { 
                 // deducts coins if ladder used
                 coins -= ladderPrice;
+                ladderUsed = true;
+                canTeleport = true;
+
+
             }
         }
     }
@@ -686,9 +690,11 @@ public class Player_Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Move to next floor hub when using ladder
-        if (collision.gameObject.tag == "Ladder")
+        if (collision.gameObject.tag == "Ladder_Tele" && canTeleport)
         {
-            inLadderTrigger = true;
+            this.transform.position = levels[level].transform.position;
+            canTeleport = false;
+            ladderUsed = false;
         }
 
         // Move to next floor hub when using ladder

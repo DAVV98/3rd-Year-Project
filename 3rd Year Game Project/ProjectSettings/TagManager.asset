@@ -27,6 +27,7 @@ TagManager:
   - Egg_Gold
   - Hub
   - cloud_stopper
+  - Ladder_Tele
   layers:
   - Default
   - TransparentFX
