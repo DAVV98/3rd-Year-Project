@@ -94,6 +94,8 @@ public class Player_Controller : MonoBehaviour
     public bool canUseLadder;
     public bool ladderUsed;
     public bool canTeleport;
+    public bool stop_following;
+    public bool has_finished;
 
     [Header("Turn Timer")]
     public Image timerBar;
@@ -162,6 +164,9 @@ public class Player_Controller : MonoBehaviour
         map_mid_turn = false;
 
         curr_transition_timer = transition_timer;
+
+        stop_following = false;
+        has_finished = false;
 
     }
 
@@ -390,14 +395,18 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Jumping()
     {
-       
+        // Checks if grounded
+        Grounding();
 
         //Check if it is players turn
-        if(canMove == true)
+        if (canMove == true)
         {
             // Get Jump Input, and if player grounded allow vertical movement
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
+                // set gravity to zero - if already in air
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                // add jump force
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
 
             }
@@ -782,7 +791,21 @@ public class Player_Controller : MonoBehaviour
             // increase health by one
             is_at_hub = true;
         }
-  
+
+        // check if at floor hub
+        if (collision.gameObject.tag == "end")
+        {
+            // increase health by one
+            stop_following = true;
+        }    
+        
+        // check if at floor hub
+        if (collision.gameObject.tag == "finish_line")
+        {
+            has_finished = true;
+            Debug.Log("Winner");
+        }
+
 
         for (int i = 1; i <= number_chunks; i++)
         {

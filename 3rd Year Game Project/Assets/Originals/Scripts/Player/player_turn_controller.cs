@@ -83,8 +83,12 @@ public class player_turn_controller : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        
+        
         // Run turn switcher
         next();
+
+       
 
         // Update player controller turns depending on switcher
         isPlayer1_turn = players[0].GetComponent<Player_Controller>().isMyTurn;
@@ -236,8 +240,8 @@ public class player_turn_controller : MonoBehaviour
 
                 player_cam[0].gameObject.SetActive(true);
                 player_cam[1].gameObject.SetActive(false);
-                player_cam[2].gameObject.SetActive(false);
-                player_cam[3].gameObject.SetActive(false);
+                if (players.Length > 2) player_cam[2].gameObject.SetActive(false);
+                if (players.Length > 3) player_cam[3].gameObject.SetActive(false);
 
                 // set mid turn map of previous player to inactive
                 if (players.Length == 2) players[1].GetComponent<Player_Controller>().map_mid_turn = false;
@@ -275,8 +279,8 @@ public class player_turn_controller : MonoBehaviour
                 // set camera of player to active, set all others to inactive
                 player_cam[1].gameObject.SetActive(true);
                 player_cam[0].gameObject.SetActive(false);
-                player_cam[2].gameObject.SetActive(false);
-                player_cam[3].gameObject.SetActive(false);
+                if (players.Length > 2) player_cam[2].gameObject.SetActive(false);
+                if (players.Length > 3) player_cam[3].gameObject.SetActive(false);
 
                 // set mid turn map of previous player to inactive
                 players[0].GetComponent<Player_Controller>().map_mid_turn = false;

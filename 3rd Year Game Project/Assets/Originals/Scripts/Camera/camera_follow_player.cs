@@ -34,28 +34,28 @@ public class camera_follow_player : MonoBehaviour
 
         Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
 
-
-        if(target.GetComponent<Player_Controller>().transition_cam == false)
-        {
-            if(is_at_hub)
+        if(target.GetComponent<Player_Controller>().stop_following == false)
+        { 
+            if(target.GetComponent<Player_Controller>().transition_cam == false)
             {
-                // make camera follow desired position - no lerp - for smooth transition
-                transform.position = desiredPos;
+                if(is_at_hub)
+                {
+                    // make camera follow desired position - no lerp - for smooth transition
+                    transform.position = desiredPos;
+                }
+                else
+                {
+                    // make camera follow desired position - lerp for smooth movement of camera
+                    transform.position = smoothedPos;
+                }
+            
             }
             else
             {
-                // make camera follow desired position - lerp for smooth movement of camera
-                transform.position = smoothedPos;
+                this.transform.position = new Vector3(-1.5f, (target.GetComponent<Player_Controller>().transition_cam_Ypos - 0.4f), -20);
             }
-            
         }
-        else
-        {
-            this.transform.position = new Vector3(-1.5f, (target.GetComponent<Player_Controller>().transition_cam_Ypos - 0.4f), -20);
-        }
-
-
-
+    
     }
 
 }

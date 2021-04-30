@@ -48,9 +48,11 @@ public class title_screen_controller : MonoBehaviour
                 break;
             case 2:
                 color_size_text(T_text, PS_text, C_text);
+               
                 break;
             case 3:
                 color_size_text(C_text, PS_text, T_text);
+                if (Input.GetButtonDown("Button_One")) SceneManager.LoadScene(2);
                 break;
         }
     }

@@ -28,6 +28,9 @@ TagManager:
   - Hub
   - cloud_stopper
   - Ladder_Tele
+  - end
+  - finish_line
+  - start_fw
   layers:
   - Default
   - TransparentFX
@@ -45,7 +48,7 @@ TagManager:
   - ice_ground
   - player_sleep
   - HH
-  - 
+  - ignore
   - 
   - 
   - 
