@@ -257,6 +257,8 @@ public class Player_Controller : MonoBehaviour
         show_map();
 
         transition();
+
+        health_controller();
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -741,13 +743,9 @@ public class Player_Controller : MonoBehaviour
         // if collision with projectile check health
         if (collision.gameObject.tag == "Projectile")
         {
-            // if health = 0, send to level hub
-            if(health <= 0)
-            {
-                this.transform.position = levels[level - 1].transform.position;           
-            }
+            
             // deduct health
-            else
+            if (health > 0)
             {
                 health--;
                 Instantiate(explosion, exp_pos);
@@ -855,6 +853,15 @@ public class Player_Controller : MonoBehaviour
             Map.SetActive(false);
         }
 
+    }
+
+    void health_controller()
+    {
+        if (health <= 0)
+        {
+            this.transform.position = levels[level - 1].transform.position;
+            health = 3;
+        }
     }
 
     /// <summary>

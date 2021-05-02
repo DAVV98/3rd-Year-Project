@@ -7,7 +7,7 @@ public class ice_snake_controller : MonoBehaviour
     [Header("Movement")]
     public Transform left;
     public Transform right;
-    private bool movingRight;
+    public bool movingRight;
     public float moveSpeed;
     private float reg_speed;
 
@@ -29,6 +29,8 @@ public class ice_snake_controller : MonoBehaviour
         setBool();
         patrol();
         Attack();
+
+        Debug.Log(attack);
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
