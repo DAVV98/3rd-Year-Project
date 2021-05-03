@@ -26,4 +26,8 @@ public class global_player_controller : MonoBehaviour
 
     [Header("Health")]
     public int GLOBAL_Start_Health;
+
+    [Header("Audio")]
+    public GameObject GLOBAL_hurt_Sound;
+
 }

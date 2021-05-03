@@ -166,6 +166,7 @@ public class moving_platform : MonoBehaviour
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player_Sleep" || collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(transform);
+            collision.collider.GetComponent<Player_Controller>().onMovingPlat = true;
         }
     }
 
@@ -188,6 +189,7 @@ public class moving_platform : MonoBehaviour
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player_Sleep"|| collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(null);
+            collision.collider.GetComponent<Player_Controller>().onMovingPlat = false;
         }
     }
 

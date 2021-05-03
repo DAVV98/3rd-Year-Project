@@ -18,7 +18,7 @@ public class snake_attack_collider : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             GetComponentInParent<ice_snake_controller>().attack = true;
-            collision.GetComponent<Player_Controller>().health -= 1;
+            collision.GetComponent<Player_Controller>().hit = true;
            
         }
 

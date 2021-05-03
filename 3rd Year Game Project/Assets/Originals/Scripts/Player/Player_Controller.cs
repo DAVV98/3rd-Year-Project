@@ -31,6 +31,9 @@ public class Player_Controller : MonoBehaviour
     [Header("Camera")]
     public float camY; // players animator.
 
+    [Header("Audio")]
+    private GameObject hurt_sound_effect;
+
     [Header("Attack")]
     public bool isAttacking; // checks if player is attcking
     private float timeBetweenAttack; // set time between attacks
@@ -47,6 +50,8 @@ public class Player_Controller : MonoBehaviour
     private float horizontalInput; // controller horizontal input
     public float air_movement_divider; // divides movespeed in air to allow for more realistic jump
     public bool ice_ground;
+    public bool onMovingPlat;
+    public bool hit;
 
 
     [Header("Jumping")]
@@ -112,7 +117,9 @@ public class Player_Controller : MonoBehaviour
     public ParticleSystem explosion;
     public Transform exp_pos;
 
-
+    // slide protection
+    private float start_slide_timer = 0.1f;
+    private float curr_slide_timer;
 
     private int min_time; // minimum turn length
     private int max_time; // maximum turn length
@@ -167,7 +174,8 @@ public class Player_Controller : MonoBehaviour
 
         stop_following = false;
         has_finished = false;
-
+        onMovingPlat = false;
+        hit = false;
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -201,6 +209,8 @@ public class Player_Controller : MonoBehaviour
         active_sped_up_turns = GPC_Object.GetComponent<global_player_controller>().GLOBAL_Speed_Up_Active_Turns - 1;
 
         health = GPC_Object.GetComponent<global_player_controller>().GLOBAL_Start_Health;
+
+        hurt_sound_effect = GPC_Object.GetComponent<global_player_controller>().GLOBAL_hurt_Sound;
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -212,6 +222,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        Debug.Log("on plat = " + onMovingPlat);
 
         //only allow the functions if player turn.
         if (isMyTurn == true)
@@ -221,14 +232,15 @@ public class Player_Controller : MonoBehaviour
 
             
         }
+       
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+  
 
-        // Gets horizontal input each frame, and sets this as a float variable
-        float hor_in = Input.GetAxisRaw("Horizontal");
 
         // rounds up/down input to avoid acceleration on movement.
-        if (hor_in > 0) horizontalInput = 1;
-        else if (hor_in < 0) horizontalInput = -1;
-        else horizontalInput = 0;
+       // if (hor_in > 0) horizontalInput = 1;
+        //else if (hor_in < 0) horizontalInput = -1;
+        //else horizontalInput = 0;
 
         // Sets UI Coins text accoridng to number of coins player posses.
         Coins_Text.text = coins.ToString();
@@ -259,6 +271,8 @@ public class Player_Controller : MonoBehaviour
         transition();
 
         health_controller();
+
+        hurt();
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -366,9 +380,12 @@ public class Player_Controller : MonoBehaviour
 
         // if players turn allow movement.
         if (canMove == true)
-        {   
+        {
+
+            curr_slide_timer = start_slide_timer;
+
             // if on ice ground make movement slippy
-            if(ice_ground == true && isGrounded)
+            if (ice_ground == true && isGrounded)
             {
                 Vector2 ice_movement = new Vector2(horizontalInput * (moveSpeed - 2), 0);
 
@@ -386,6 +403,22 @@ public class Player_Controller : MonoBehaviour
                 rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);     
             }
         }
+        else
+        {
+            if(curr_slide_timer > 0)
+            {
+                // change horizontal velocity to move player.
+                rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+                curr_slide_timer -= Time.deltaTime;
+            }
+            else
+            {
+                // change horizontal velocity to move player.
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+           
+        }
+       
         
     }
 
@@ -805,6 +838,8 @@ public class Player_Controller : MonoBehaviour
         }
 
 
+
+
         for (int i = 1; i <= number_chunks; i++)
         {
             if (collision.gameObject.name == "Chunk Collider " + i)
@@ -813,6 +848,16 @@ public class Player_Controller : MonoBehaviour
             }
         }
        
+    }
+    
+    void hurt()
+    {
+        if(hit == true)
+        {
+            health -= 1;
+            hurt_sound_effect.GetComponent<AudioSource>().Play();
+            hit = false;
+        }
     }
 
     void heart_containers()
@@ -898,6 +943,7 @@ public class Player_Controller : MonoBehaviour
             // increase health by one
             is_at_hub = false;
         }
+
     }
 
     /// <summary>

@@ -31,6 +31,7 @@ TagManager:
   - end
   - finish_line
   - start_fw
+  - slidy_Wall
   layers:
   - Default
   - TransparentFX
