@@ -12,6 +12,11 @@ public class projectile_launcher : MonoBehaviour
     public GameObject projectile; // projectile ejcted from launcher
     private GameObject clone; // clone of projectile
     public Transform launch_pos; // position to launch projectile from
+    public GameObject explosion_audio;
+    public bool audio_on;
+    public GameObject EXPLOSION_COLLIDER;
+    public GameObject Player;
+    public int cannon_level;
 
     // awake called before game starts
     // called here object transforms before first instantiation
@@ -21,20 +26,67 @@ public class projectile_launcher : MonoBehaviour
         clone = (GameObject)Instantiate(projectile); // clone projectile
     }
 
+    private void Start()
+    {
+        
+       
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+        float dist_to_player = Vector3.Distance(Player.transform.position, this.transform.position);
+
         // shoot timer
         // only shoot when timer at zero
         // else timer --
         if (timer <= 0)
         {
             Instantiate(projectile, launch_pos.position, Quaternion.identity); // instaniate projectile
+            if (dist_to_player <= 20 && cannon_level == Player.GetComponent<Player_Controller>().level)
+            {
+                explosion_audio.GetComponent<AudioSource>().Play(); // play cannon sound effect
+            }
+
             timer = time_between_shots; // timer = start time
         }
         else
         {
             timer -= Time.deltaTime; // reduce timer 
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Check what level cannon is on and change level var depending on floor.
+        if (collision.gameObject.tag == "Level 1")
+        {
+            cannon_level = 1;
+        }
+
+        if (collision.gameObject.tag == "Level 2")
+        {
+            cannon_level = 2;
+
+        }
+
+        if (collision.gameObject.tag == "Level 3")
+        {
+            cannon_level = 3;
+
+        }
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        // set gizmo colour
+        Gizmos.color = Color.green;
+
+
+        // attack overlap circle
+        Gizmos.DrawWireSphere(this.transform.position, 20);
     }
 }

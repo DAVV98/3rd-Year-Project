@@ -29,5 +29,6 @@ public class global_player_controller : MonoBehaviour
 
     [Header("Audio")]
     public GameObject GLOBAL_hurt_Sound;
+    public GameObject GLOBAL_countdown;
 
 }

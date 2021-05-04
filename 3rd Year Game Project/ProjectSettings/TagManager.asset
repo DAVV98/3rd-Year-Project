@@ -32,6 +32,7 @@ TagManager:
   - finish_line
   - start_fw
   - slidy_Wall
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,7 @@ public class Player_Controller : MonoBehaviour
 
     [Header("Audio")]
     private GameObject hurt_sound_effect;
+    private GameObject countdown_sound;
 
     [Header("Attack")]
     public bool isAttacking; // checks if player is attcking
@@ -87,7 +88,7 @@ public class Player_Controller : MonoBehaviour
    
 
     [Header("Current Floor")]
-    private int level; // checks what current floor is
+    public int level; // checks what current floor is
 
     [Header("Floor Transitions")]
     public Transform[] levels; // floor hubs
@@ -128,13 +129,13 @@ public class Player_Controller : MonoBehaviour
     public bool useObj;
     public bool inLadderTrigger;
     public bool inPriceTrigger;
-    
 
-    
+
+    private bool canPlayCountdown;
+    private int countdown_sound_Played;
+
     // Settings
     Rigidbody2D rb;
-
-
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -176,6 +177,7 @@ public class Player_Controller : MonoBehaviour
         has_finished = false;
         onMovingPlat = false;
         hit = false;
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,6 +213,8 @@ public class Player_Controller : MonoBehaviour
         health = GPC_Object.GetComponent<global_player_controller>().GLOBAL_Start_Health;
 
         hurt_sound_effect = GPC_Object.GetComponent<global_player_controller>().GLOBAL_hurt_Sound;
+        
+        countdown_sound = GPC_Object.GetComponent<global_player_controller>().GLOBAL_countdown;
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -272,7 +276,9 @@ public class Player_Controller : MonoBehaviour
 
         health_controller();
 
-        hurt();
+        AUDIO();
+
+        Debug.Log(canPlayCountdown);
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -544,6 +550,8 @@ public class Player_Controller : MonoBehaviour
 
                 // set so you cannot start turn again
                 canStartTurn = false;
+
+                countdown_sound_Played = 0;
             }
         }
        
@@ -569,10 +577,19 @@ public class Player_Controller : MonoBehaviour
             if (timer_length > -1)
             {
                 canMove = true;
+
+                if(timer_length >= 2.1 && timer_length <= 2.2)
+                {
+                    canPlayCountdown = true;
+                    
+                }
+                else { canPlayCountdown = false; }
+               
             }
             // once timer ends
             else if(timer_length < -1)
             {
+
                 //cannot move
                 canMove = false;
                 // timer off
@@ -581,6 +598,7 @@ public class Player_Controller : MonoBehaviour
                 endTurn = true;
 
                 canStartTurn = false;
+
             }
         }
     }
@@ -850,13 +868,20 @@ public class Player_Controller : MonoBehaviour
        
     }
     
-    void hurt()
+    void AUDIO()
     {
         if(hit == true)
         {
             health -= 1;
             hurt_sound_effect.GetComponent<AudioSource>().Play();
             hit = false;
+        }
+        
+        if(canPlayCountdown == true && countdown_sound_Played < 1)
+        {
+            canPlayCountdown = false;
+            countdown_sound.GetComponent<AudioSource>().Play();
+            countdown_sound_Played++;
         }
     }
 
