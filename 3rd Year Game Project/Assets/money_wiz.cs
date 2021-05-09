@@ -16,11 +16,15 @@ public class money_wiz : MonoBehaviour
     }
     void Update()
     {
-        // turns on blocker when player goes through ladder
-        if(active_player.GetComponent<Player_Controller>().ladderUsed == false)
+        if(active_player != null)
         {
-            blocker.GetComponent<ladder_portal>().blocker_off = false;
+            // turns on blocker when player goes through ladder
+            if (active_player.GetComponent<Player_Controller>().ladderUsed == false)
+            {
+                blocker.GetComponent<ladder_portal>().blocker_off = false;
+            }
         }
+       
     }
 
     private void OnTriggerStay2D(Collider2D collision)

@@ -17,6 +17,7 @@ public class projectile_launcher : MonoBehaviour
     public GameObject EXPLOSION_COLLIDER;
     public GameObject Player;
     public int cannon_level;
+    private float dist_to_player;
 
     // awake called before game starts
     // called here object transforms before first instantiation
@@ -37,7 +38,15 @@ public class projectile_launcher : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
 
-        float dist_to_player = Vector3.Distance(Player.transform.position, this.transform.position);
+        if(Player != null)
+        {
+            dist_to_player = Vector3.Distance(Player.transform.position, this.transform.position);
+        }
+        else
+        {
+            dist_to_player = 1000;
+        }
+       
 
         // shoot timer
         // only shoot when timer at zero

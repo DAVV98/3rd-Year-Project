@@ -5,7 +5,7 @@ using UnityEngine;
 public class shooting_rotator : MonoBehaviour
 {
     [Header("Players")]
-    private GameObject[] players; // list of players in game
+    private GameObject player; // list of players in game
 
     [Header("Target Mechanism")]
     public float attack_dist; // max attack range
@@ -15,10 +15,15 @@ public class shooting_rotator : MonoBehaviour
     public Transform dart_start; // pos projectile shoots from
     public GameObject shoot_Direction; // shooting direction
     public float dart_force; // force of shot
+    public float dist;
 
     [Header("Shooting Timer")]
     public float time_between_shots; //time between shots
-    private float timer; // shoot timer
+    public float timer; // shoot timer
+
+    [Header("Sound")]
+    public GameObject sound_effect;
+
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -43,8 +48,9 @@ public class shooting_rotator : MonoBehaviour
     /// </summary>
     void Update()
     {
+       
         // adds active players to player list
-        players = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // aims and shoots
         aim_shoot();
@@ -60,62 +66,65 @@ public class shooting_rotator : MonoBehaviour
     /// </summary>
     void aim_shoot()
     {
-
-        // Loop through players in game
-        for (int i = 0; i < players.Length; i++)
+        if (player != null)
         {
             // check distance to each player
-            float dist = Vector3.Distance(transform.position, players[i].transform.position);
+            dist = Vector2.Distance(transform.position, player.transform.position);
+        }
+        else
+        {
+            dist = 1000;
+        }
 
-            // check distance to player is less than attack distance 
-            // if so attack
-            if (dist <= attack_dist)
+        // check distance to player is less than attack distance 
+        // if so attack
+        if (dist <= attack_dist)
+        {
+            // Trigonometry to calculate angle to fire - Diagram in report
+            float hyp = dist;
+            float adj = this.transform.position.y - player.transform.position.y;
+            float cos = adj / hyp;
+            float inv_cos = Mathf.Acos(cos);
+            float angle_deg = inv_cos * Mathf.Rad2Deg;
+
+            // if player to the right negative angle
+            if (player.transform.position.x <= this.transform.position.x)
             {
-                // Trigonometry to calculate angle to fire - Diagram in report
-                float hyp = dist;
-                float adj = this.transform.position.y - players[i].transform.position.y;
-                float cos = adj / hyp;
-                float inv_cos = Mathf.Acos(cos);
-                float angle_deg = inv_cos * Mathf.Rad2Deg;
-
-                // if player to the right negative angle
-                if (players[i].transform.position.x <= this.transform.position.x)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, -angle_deg);
-                }
-                // if player to right positve angle
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, angle_deg);
-                }
-
-                // if timer at 0 - fire
-                if (timer <= 0)
-                {
-                    // instantiate projectile
-                    GameObject dart_objects = Instantiate(dart, dart_start.position, Quaternion.identity);
-
-                    // direction to fire
-                    Vector3 Direction = (shoot_Direction.transform.position - this.transform.position).normalized;
-
-                    // make projectile fire
-                    dart_objects.GetComponent<Rigidbody2D>().AddForce(Direction.normalized * dart_force, ForceMode2D.Impulse);
-                   
-                    // reset timer
-                    timer = time_between_shots;
-                }
-                // if timer at > 0
-                else
-                {
-                    //reduce timer by a second
-                    timer -= Time.deltaTime;
-                }
-
-                break;
+                transform.rotation = Quaternion.Euler(0, 0, -angle_deg);
+            }
+            // if player to right positve angle
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, angle_deg);
             }
 
+            // if timer at 0 - fire
+            if (timer <= 0)
+            {
+                // instantiate projectile
+                GameObject dart_objects = Instantiate(dart, dart_start.position, Quaternion.identity);
+                sound_effect.GetComponent<AudioSource>().Play(); // play cannon sound effect
 
+                // direction to fire
+                Vector3 Direction = (shoot_Direction.transform.position - this.transform.position).normalized;
 
+                // make projectile fire
+                dart_objects.GetComponent<Rigidbody2D>().AddForce(Direction.normalized * dart_force, ForceMode2D.Impulse);
+                   
+                // reset timer
+                timer = time_between_shots;
+            }
+            // if timer at > 0
+            else
+            {
+                //reduce timer by a second
+                timer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            // reset timer
+            //timer = time_between_shots;
         }
     }
 }

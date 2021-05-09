@@ -792,15 +792,17 @@ public class Player_Controller : MonoBehaviour
 
 
         // if collision with projectile check health
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Projectile" && this.gameObject.tag == "Player")
         {
             
             // deduct health
             if (health > 0)
             {
-                health--;
+                health -= 1;
+                Destroy(collision.gameObject);
                 Instantiate(explosion, exp_pos);
                 explosion.Play();
+                hurt_sound_effect.GetComponent<AudioSource>().Play();
             }
       
         }
