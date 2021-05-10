@@ -11,7 +11,7 @@ public class moving_plat_holder : MonoBehaviour
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player_Sleep" || collision.gameObject.tag == "Stop_Projectiles")
         {
             collision.collider.transform.SetParent(transform);
-            collision.collider.GetComponent<Player_Controller>().onMovingPlat = true;
+            collision.collider.GetComponent<Player_Controller>().onMovingPlat = true; 
         }
     }
 

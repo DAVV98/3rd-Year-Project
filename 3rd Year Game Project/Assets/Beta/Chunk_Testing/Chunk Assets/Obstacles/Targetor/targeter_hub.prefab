@@ -138,6 +138,8 @@ GameObject:
   - component: {fileID: 6813175638170417196}
   - component: {fileID: 6813175638170417198}
   - component: {fileID: 6813175638170417197}
+  - component: {fileID: 939361316945596046}
+  - component: {fileID: 1933779572137975119}
   m_Layer: 0
   m_Name: targetor
   m_TagString: Untagged
@@ -223,14 +225,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_dist: 10
+  rotator_level: 0
   dart: {fileID: 6032760050422956070, guid: bc7fd4d01cee4c947a5098e32849a7f0, type: 3}
   dart_start: {fileID: 6813175638170417196}
   shoot_Direction: {fileID: 6813175639354519641}
   dart_force: 15
   dist: 0
-  time_between_shots: 1
+  time_between_shots: 1.5
   timer: 0
   sound_effect: {fileID: 1478141958966271530}
+--- !u!58 &939361316945596046
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813175638170417187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.39999977}
+  serializedVersion: 2
+  m_Radius: 0.4
+--- !u!50 &1933779572137975119
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813175638170417187}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!1 &6813175639354519641
 GameObject:
   m_ObjectHideFlags: 0

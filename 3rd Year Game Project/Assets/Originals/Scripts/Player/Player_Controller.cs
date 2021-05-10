@@ -175,7 +175,6 @@ public class Player_Controller : MonoBehaviour
 
         stop_following = false;
         has_finished = false;
-        onMovingPlat = false;
         hit = false;
 
     }
@@ -226,8 +225,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        Debug.Log("on plat = " + onMovingPlat);
-
+    
         //only allow the functions if player turn.
         if (isMyTurn == true)
         {
@@ -395,7 +393,7 @@ public class Player_Controller : MonoBehaviour
             {
                 Vector2 ice_movement = new Vector2(horizontalInput * (moveSpeed - 2), 0);
 
-                if(rb.velocity.magnitude <= (moveSpeed * 3))
+                if(rb.velocity.magnitude <= (moveSpeed * 1.5))
                 {
                     rb.AddForce(ice_movement);
                 }
@@ -790,21 +788,21 @@ public class Player_Controller : MonoBehaviour
             camY = 20; // sets what Y pos the player camera should have
         }
 
-
         // if collision with projectile check health
         if (collision.gameObject.tag == "Projectile" && this.gameObject.tag == "Player")
         {
-            
+            Debug.Log("Hit");
             // deduct health
+
             if (health > 0)
             {
-                health -= 1;
                 Destroy(collision.gameObject);
+                health -= 1;
                 Instantiate(explosion, exp_pos);
                 explosion.Play();
                 hurt_sound_effect.GetComponent<AudioSource>().Play();
             }
-      
+
         }
 
         //If falling out of game send to start
@@ -869,12 +867,12 @@ public class Player_Controller : MonoBehaviour
         }
        
     }
-    
+
     void AUDIO()
     {
         if(hit == true)
         {
-            health -= 1;
+            //health -= 1;
             hurt_sound_effect.GetComponent<AudioSource>().Play();
             hit = false;
         }

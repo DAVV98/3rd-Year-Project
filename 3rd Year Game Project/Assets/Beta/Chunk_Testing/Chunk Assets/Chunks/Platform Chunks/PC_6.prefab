@@ -940,6 +940,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving_Plat
       objectReference: {fileID: 0}
+    - target: {fileID: 9111715230874333144, guid: ada6d2524d0057348bba34f1e50488cd,
+        type: 3}
+      propertyPath: isVertical
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111715230874333144, guid: ada6d2524d0057348bba34f1e50488cd,
+        type: 3}
+      propertyPath: isHorizontal
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada6d2524d0057348bba34f1e50488cd, type: 3}
 --- !u!4 &1853677115325954504 stripped

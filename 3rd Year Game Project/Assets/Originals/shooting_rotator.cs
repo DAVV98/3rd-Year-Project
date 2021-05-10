@@ -9,6 +9,7 @@ public class shooting_rotator : MonoBehaviour
 
     [Header("Target Mechanism")]
     public float attack_dist; // max attack range
+    public int rotator_level; // floor targetoir is on
 
     [Header("Dart")]
     public GameObject dart; // shooting prefab
@@ -35,7 +36,7 @@ public class shooting_rotator : MonoBehaviour
     void Start()
     {
         // set initial timer lenght timer
-        timer = time_between_shots;
+        timer = 0.5f;
 
     }
 
@@ -55,6 +56,7 @@ public class shooting_rotator : MonoBehaviour
         // aims and shoots
         aim_shoot();
 
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -66,11 +68,13 @@ public class shooting_rotator : MonoBehaviour
     /// </summary>
     void aim_shoot()
     {
+        // if player exists check diastance to player
         if (player != null)
         {
             // check distance to each player
             dist = Vector2.Distance(transform.position, player.transform.position);
         }
+        // if player does noit exit set diatcne to large unrealistic number - avoids errors
         else
         {
             dist = 1000;
@@ -78,7 +82,7 @@ public class shooting_rotator : MonoBehaviour
 
         // check distance to player is less than attack distance 
         // if so attack
-        if (dist <= attack_dist)
+        if (dist <= attack_dist && rotator_level == player.GetComponent<Player_Controller>().level)
         {
             // Trigonometry to calculate angle to fire - Diagram in report
             float hyp = dist;
@@ -102,7 +106,9 @@ public class shooting_rotator : MonoBehaviour
             if (timer <= 0)
             {
                 // instantiate projectile
+                
                 GameObject dart_objects = Instantiate(dart, dart_start.position, Quaternion.identity);
+                // shooting soundeffect
                 sound_effect.GetComponent<AudioSource>().Play(); // play cannon sound effect
 
                 // direction to fire
@@ -121,10 +127,30 @@ public class shooting_rotator : MonoBehaviour
                 timer -= Time.deltaTime;
             }
         }
-        else
-        {
-            // reset timer
-            //timer = time_between_shots;
-        }
+
     }
+    
+    // check what floor targetor is on to ensure it is not running when player on another floor.
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Check what level rotator is on and change level var depending on floor.
+        if (collision.gameObject.tag == "Level 1")
+        {
+            rotator_level = 1;
+        }
+
+        if (collision.gameObject.tag == "Level 2")
+        {
+            rotator_level = 2;
+
+        }
+
+        if (collision.gameObject.tag == "Level 3")
+        {
+            rotator_level = 3;
+
+        }
+
+    }
+
 }
