@@ -151,6 +151,12 @@ public class shooting_rotator : MonoBehaviour
 
         }
 
+        if (collision.gameObject.tag == "Level 4")
+        {
+            rotator_level = 4;
+
+        }
+
     }
 
 }

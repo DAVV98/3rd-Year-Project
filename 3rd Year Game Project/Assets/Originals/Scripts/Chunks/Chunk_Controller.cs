@@ -6,6 +6,7 @@ public class Chunk_Controller : MonoBehaviour
 {
     [Header("Level Settings")]
     public int floor_length; // length of floor
+    public int level;
 
     [Header("Load Chunks")]
     public GameObject ladder_chunk; 
@@ -24,6 +25,7 @@ public class Chunk_Controller : MonoBehaviour
 
     [Header("Chunk List")]
     public GameObject[] play_chunks;
+    public GameObject[] loaded_chunks;
 
     [Header("Chunk Seperation")]
     public int chunk_seperation;
@@ -31,8 +33,56 @@ public class Chunk_Controller : MonoBehaviour
     // runs before start
     void Awake()
     {
+        /*
         // randomises Play_chunks array, so chunks are placed in random order
         randomizeArray(play_chunks);
+*/
+
+        if(level == 1)
+        {
+            loaded_chunks = chunk_array_creator.floor_1_loaded;
+
+            if(loaded_chunks != null)
+            {
+                System.Array.Resize(ref play_chunks, loaded_chunks.Length);
+
+                play_chunks = loaded_chunks;
+            }
+     
+        }
+        else if(level == 2)
+        {
+            loaded_chunks = chunk_array_creator.floor_2_loaded;
+
+            if (loaded_chunks != null)
+            {
+                System.Array.Resize(ref play_chunks, loaded_chunks.Length);
+
+                play_chunks = loaded_chunks;
+            }
+        }
+        else if (level == 3)
+        {
+            loaded_chunks = chunk_array_creator.floor_3_loaded;
+
+            if (loaded_chunks != null)
+            {
+                System.Array.Resize(ref play_chunks, loaded_chunks.Length);
+
+                play_chunks = loaded_chunks;
+            }
+        }
+        else if (level == 4)
+        {
+            loaded_chunks = chunk_array_creator.floor_4_loaded;
+
+            if (loaded_chunks != null)
+            {
+                System.Array.Resize(ref play_chunks, loaded_chunks.Length);
+
+                play_chunks = loaded_chunks;
+            }
+        }
     }
     void Start()
     {
@@ -41,8 +91,6 @@ public class Chunk_Controller : MonoBehaviour
 
         // instantiates all chunks
         load_chunks();
-
-
     }
 
     /// <summary>
@@ -57,8 +105,9 @@ public class Chunk_Controller : MonoBehaviour
         Instantiate(start_chunk, new Vector3(this.transform.position.x, this.transform.position.y, 0), Quaternion.identity);
 
         // instatiate end chunk at end of level
-        Instantiate(end_chunk, new Vector3(this.transform.position.x + (floor_length * chunk_seperation), this.transform.position.y, 0), Quaternion.identity);
+        Instantiate(end_chunk, new Vector3(this.transform.position.x + ((floor_length) * chunk_seperation), this.transform.position.y, 0), Quaternion.identity);
 
+        /*
         // If Snake and/or ladder instatiate at position set by S_L_Pos()
         if (addLadder)Instantiate(ladder_chunk, new Vector3(Ladder_Pos, this.transform.position.y, 0), Quaternion.identity);
 
@@ -76,6 +125,21 @@ public class Chunk_Controller : MonoBehaviour
             }
 
         }
+        */
+
+        for(int i = 1; i < floor_length; i++)
+        {
+            if(i != random_L)
+            {
+                Instantiate(play_chunks[i - 1], new Vector3(i * chunk_seperation, this.transform.position.y, 0), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(ladder_chunk, new Vector3(random_L * chunk_seperation, this.transform.position.y, 0), Quaternion.identity);
+            }
+        }
+
+
     }
 
     /// <summary>

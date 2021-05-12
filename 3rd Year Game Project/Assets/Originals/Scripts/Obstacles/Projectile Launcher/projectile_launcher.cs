@@ -87,6 +87,13 @@ public class projectile_launcher : MonoBehaviour
 
         }
 
+
+        if (collision.gameObject.tag == "Level 4")
+        {
+            cannon_level = 4;
+
+        }
+
     }
 
     private void OnDrawGizmos()

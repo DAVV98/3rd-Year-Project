@@ -246,8 +246,12 @@ public class Player_Controller : MonoBehaviour
         //else if (hor_in < 0) horizontalInput = -1;
         //else horizontalInput = 0;
 
-        // Sets UI Coins text accoridng to number of coins player posses.
-        Coins_Text.text = coins.ToString();
+        if(Coins_Text != null)
+        {
+            // Sets UI Coins text accoridng to number of coins player posses.
+            Coins_Text.text = coins.ToString();
+        }
+
 
             // changes player tag, depending on, if it is the players turn or not.
         tag_name();
@@ -278,8 +282,6 @@ public class Player_Controller : MonoBehaviour
         health_controller();
 
         AUDIO();
-
-        Debug.Log(canPlayCountdown);
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -792,6 +794,12 @@ public class Player_Controller : MonoBehaviour
         {
             level = 3;
             camY = 20; // sets what Y pos the player camera should have
+        }
+
+        if (collision.gameObject.tag == "Level 4")
+        {
+            level = 4;
+            camY = 30; // sets what Y pos the player camera should have
         }
 
         // if collision with projectile check health
