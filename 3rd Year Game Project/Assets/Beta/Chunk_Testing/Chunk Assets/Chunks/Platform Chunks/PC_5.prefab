@@ -510,6 +510,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_Blocker
       objectReference: {fileID: 0}
+    - target: {fileID: 4702108971820308824, guid: 10fd9848506d3a9478ce6e4544cd794a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10fd9848506d3a9478ce6e4544cd794a, type: 3}
 --- !u!4 &6421252676087715955 stripped

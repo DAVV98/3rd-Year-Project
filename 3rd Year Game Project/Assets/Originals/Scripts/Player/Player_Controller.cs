@@ -225,7 +225,9 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     private void Update()
     {
-    
+        // Checks if grounded
+        Grounding();
+
         //only allow the functions if player turn.
         if (isMyTurn == true)
         {
@@ -256,6 +258,7 @@ public class Player_Controller : MonoBehaviour
 
         // Function that gets input if player wants to use ladder, if used checks if enough money.
         useLadder();
+
 
         // Function that allows player to jump and allows changing jump parameters
         Jumping();
@@ -293,6 +296,8 @@ public class Player_Controller : MonoBehaviour
 
         // Function that is in control of horizontal player movement. 
         Movement();
+
+      
 
     }
 
@@ -379,8 +384,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Movement()
     {
-        // Checks if grounded
-        Grounding();
+        
 
         // if players turn allow movement.
         if (canMove == true)
@@ -434,9 +438,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void Jumping()
     {
-        // Checks if grounded
-        Grounding();
-
+      
         //Check if it is players turn
         if (canMove == true)
         {
@@ -509,10 +511,14 @@ public class Player_Controller : MonoBehaviour
         if (M_Grounded || L_Grounded || R_Grounded)
         {
             isGrounded = true;
+            this.GetComponent<Rigidbody2D>().drag = 0;
+            this.GetComponent<Rigidbody2D>().angularDrag = 0;
         }
         else if (!M_Grounded && !L_Grounded && !R_Grounded)
         {
             isGrounded = false;
+            this.GetComponent<Rigidbody2D>().drag = 0.5f;
+            this.GetComponent<Rigidbody2D>().angularDrag = 0.5f;
         }
 
 
@@ -791,13 +797,10 @@ public class Player_Controller : MonoBehaviour
         // if collision with projectile check health
         if (collision.gameObject.tag == "Projectile" && this.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
-            // deduct health
-
             if (health > 0)
             {
                 Destroy(collision.gameObject);
-                health -= 1;
+                health --;
                 Instantiate(explosion, exp_pos);
                 explosion.Play();
                 hurt_sound_effect.GetComponent<AudioSource>().Play();
@@ -870,13 +873,14 @@ public class Player_Controller : MonoBehaviour
 
     void AUDIO()
     {
+        /*
         if(hit == true)
         {
             //health -= 1;
             hurt_sound_effect.GetComponent<AudioSource>().Play();
             hit = false;
         }
-        
+        */
         if(canPlayCountdown == true && countdown_sound_Played < 1)
         {
             canPlayCountdown = false;
