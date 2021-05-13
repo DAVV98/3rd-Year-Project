@@ -9,6 +9,7 @@ public class global_player_controller : MonoBehaviour
     public float GLOBAL_jumpForce;
     public float GLOBAL_fallMultiplier;
     public float GLOBAL_lowJumpMultiplier;
+    public float GLOBAL_raycast_length;
 
     [Header("Timer")]
     public int GLOBAL_min_time;
@@ -16,6 +17,16 @@ public class global_player_controller : MonoBehaviour
 
     [Header("Money")]
     public int GLOBAL_coins;
+
+    [Header("Chunks")]
+    public int GLOBAL_num_chunks;
+
+    [Header("Attack")]
+    public float GLOBAL_start_time_between_attacks;
+    public float GLOBAL_attack_range;
+
+    [Header("Camera Transition")]
+    public float GLOBAL_transition_timer;
 
     [Header("Ladder")]
     public int GLOBAL_ladderPrice;
@@ -26,6 +37,7 @@ public class global_player_controller : MonoBehaviour
 
     [Header("Health")]
     public int GLOBAL_Start_Health;
+    public int GLOBAL_Max_Health;
 
     [Header("Audio")]
     public GameObject GLOBAL_hurt_Sound;

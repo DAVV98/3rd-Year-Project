@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Beta/Beta_Test_Build/Controls.unity
     guid: 8c7c56514d96e1743b941e34928f5ffa
   - enabled: 1
+    path: Assets/Beta/Beta_Test_Build/Loading_Screen.unity
+    guid: d9744765a26de2345bc3b0609094e711
+  - enabled: 1
     path: Assets/Beta/Beta_Test_Build/Game Scene.unity
     guid: a713229eeadd34840af87df87091ada5
   m_configObjects: {}

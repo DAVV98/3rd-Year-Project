@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4849991039597053765}
   - component: {fileID: 4849991039597053764}
   m_Layer: 0
-  m_Name: Start_Chunk
+  m_Name: T_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 8685959089555090234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.141, y: 0.925, z: 0}
-  m_LocalScale: {x: 1.12, y: 1, z: 1}
+  m_LocalScale: {x: 1.12, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 3752193394821978944}
   m_RootOrder: 1
@@ -428,9 +428,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0.9
-  m_Text: 'You may Now begin
-
-    I wish you the best of luck!'
+  m_Text: "Start your training for \nThe Samurait Trials \nyoung Samurai!"
 --- !u!1001 &1462325911266658948
 PrefabInstance:
   m_ObjectHideFlags: 0

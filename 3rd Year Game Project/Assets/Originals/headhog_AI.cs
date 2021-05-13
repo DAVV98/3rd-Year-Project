@@ -20,21 +20,32 @@ public class headhog_AI : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
 
-    private GameObject[] players; // list of players
+    [Header("Attached")]
+    public float attachedTimerLenght;
+    public float currAttchedTimer;
+
+    private GameObject player; // list of players
 
 
     private bool movingRight;
+
+    public int push_dir;
+
+    private float dist;
+
+    public float push_force = 25;
 
     void Start()
     {
         moveSpeed = speed;
         movingRight = true; // always starts enemy moving right
+        currAttchedTimer = attachedTimerLenght;
     }
 
     void Update()
     {
         // create an array of players
-        players = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
 
         // sets move direction
@@ -121,29 +132,47 @@ public class headhog_AI : MonoBehaviour
     /// </summary>
     void speed_up()
     {
-
-        // Loop through players in game
-        for (int i = 0; i < players.Length; i++)
+        if(player != null)
         {
             // check distance to each players
-            float dist = Vector3.Distance(transform.position, players[i].transform.position);
+            dist = Vector2.Distance(transform.position, player.transform.position);
+        }
 
-            // if player in distance less than zoom dist
-            if(dist <= zoom_dist)
-            {
-                moveSpeed = extra_speed; // increase speed
-                break; // if player close by end loop
-            }
-            // if no player in distance less than zoom dist
-            else
-            {
-                moveSpeed = speed; // retrun to regular speed
-            }
-
+        // if player in distance less than zoom dist
+        if(dist <= zoom_dist)
+        {
+            moveSpeed = extra_speed; // increase speed
+              
+        }
+        // if no player in distance less than zoom dist
+        else if(dist > zoom_dist)
+        {
+            moveSpeed = speed; // retrun to regular speed
+        }
  
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        // if collision with player or stop_projectile block:
+        //      - Set platform as parent so children move with platform
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("HIT");
+
+            Vector2 pushDir = transform.position + collision.transform.position;
+
+            Vector2 pushDirN = pushDir * pushDir.normalized;
+            
+            if(collision.transform.position.x > this.transform.position.x) collision.GetComponent<Rigidbody2D>().AddForce(pushDirN * push_force);
+            if (collision.transform.position.x < this.transform.position.x) collision.GetComponent<Rigidbody2D>().AddForce(-pushDirN * push_force);
+
+
 
         }
     }
 
 
- }
+
+}
