@@ -819,16 +819,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.43
       objectReference: {fileID: 0}
-    - target: {fileID: 943459805211190009, guid: 4089025eeae63e1439bd1f6698fa80e1,
-        type: 3}
-      propertyPath: attachedTimerLenght
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 943459805211190009, guid: 4089025eeae63e1439bd1f6698fa80e1,
-        type: 3}
-      propertyPath: push_force
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 943459805211190011, guid: 4089025eeae63e1439bd1f6698fa80e1,
         type: 3}
       propertyPath: m_LocalPosition.x

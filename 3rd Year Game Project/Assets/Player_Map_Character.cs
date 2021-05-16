@@ -5,12 +5,12 @@ using UnityEngine;
 public class Player_Map_Character : MonoBehaviour
 {
     [Header("Map Positions")]
-    public Transform[] map_position;
-    public int curr_pos;
-    public float offset;
+    public Transform[] map_position; // positions for player tp spawn on map
+    public int curr_pos; // current position
+    public float offset; // offset of position
 
     [Header("Represented Player")]
-    public GameObject player;
+    public GameObject player; // represented player
 
     // Update is called once per frame
     void Update()

@@ -136,10 +136,10 @@ MonoBehaviour:
   zoom: 0
   rb: {fileID: 6655420967312870686}
   animator: {fileID: 0}
-  attachedTimerLenght: 0
+  attachedTimerLenght: 3
   currAttchedTimer: 0
   push_dir: 0
-  push_force: 15
+  push_force: 5
 --- !u!95 &943459805211190004
 Animator:
   serializedVersion: 3

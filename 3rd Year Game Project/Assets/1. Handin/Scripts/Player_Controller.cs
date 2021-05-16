@@ -294,6 +294,9 @@ public class Player_Controller : MonoBehaviour
         // Fucntion that controls player audios.
         AUDIO();
 
+        // function that checks if player is hurt - plays effect and lowers health
+        hurt();
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -456,7 +459,7 @@ public class Player_Controller : MonoBehaviour
         if (canMove == true)
         {
             // Get Jump Input, and if player grounded allow vertical movement
-            if (Input.GetButtonDown("Jump") && isGrounded)
+            if (Input.GetButtonDown("Button_One") && isGrounded)
             {
                 // set gravity to zero - if already in air
                 rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -483,7 +486,7 @@ public class Player_Controller : MonoBehaviour
     /// </summary>
     void JumpGravity()
     {
-        if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        if (rb.velocity.y > 0 && !Input.GetButton("Button_One"))
         {
             rb.velocity += Vector2.up * Physics.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -548,7 +551,7 @@ public class Player_Controller : MonoBehaviour
         if(canStartTurn)
         {
             //if input is z timer start, turn start
-            if (Input.GetKey("z") && isMyTurn|| Input.GetKeyDown("joystick button 0") && isMyTurn)
+            if (Input.GetKey("z") && isMyTurn|| Input.GetButton("Button_Four") && isMyTurn)
             {
                
                 // set random turn length. TODO set values from global player field.
@@ -633,7 +636,7 @@ public class Player_Controller : MonoBehaviour
     void useLadder()
     {
         // Get input for use object
-        if (Input.GetKeyDown("y") && canUseLadder || Input.GetKeyDown("joystick button 4") && canUseLadder)
+        if (Input.GetKeyDown("y") && canUseLadder || Input.GetButton("Button_Five") && canUseLadder)
         {
             // checks if player can affors use of ladder
             if (coins >= ladderPrice)
@@ -662,7 +665,7 @@ public class Player_Controller : MonoBehaviour
         if (timeBetweenAttack <= 0)
         {
             // if attack button pressed
-            if (Input.GetKeyDown("joystick button 5") || Input.GetKey("z"))
+            if (Input.GetButton("Button_Zero") || Input.GetKey("a"))
             {
                 // player is attack 
                 isAttacking = true;
@@ -912,6 +915,23 @@ public class Player_Controller : MonoBehaviour
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /// <summary>
+    /// Function hurt(): 
+    ///     - deducts health if hit, playes hurt sound effect
+    ///     - used for snake hit
+    /// </summary>
+    void hurt()
+    {
+        if (hit == true)
+        {
+            health -= 1;
+            hurt_sound_effect.GetComponent<AudioSource>().Play();
+            hit = false;
+        }
+    }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
     /// Function AUDIO(): 
     ///     - plays audio effecrs
     /// </summary>
@@ -965,7 +985,7 @@ public class Player_Controller : MonoBehaviour
         if(canMove)
         {
             // if player presses input activate
-            if (Input.GetKey("m"))
+            if (Input.GetButton("Button_Three"))
             {
                 Map.SetActive(true);
             }

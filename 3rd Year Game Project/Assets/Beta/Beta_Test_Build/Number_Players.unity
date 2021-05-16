@@ -3350,10 +3350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053c7fc0f0de1c446a104d5c4ce602f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_1_chunks: []
-  level_2_chunks: []
-  level_3_chunks: []
-  level_4_chunks: []
   all_chunks:
   - {fileID: 4849991039597053767, guid: 21ccb3e103c9ab44a8c8f0f249ceaf23, type: 3}
   - {fileID: 4849991039597053767, guid: ca6ff8789226fe04f82897aa670b6207, type: 3}
@@ -3365,7 +3361,7 @@ MonoBehaviour:
   - {fileID: 4849991039597053767, guid: 369b22d76c3ae4340bf71b74ad25a61f, type: 3}
   - {fileID: 4849991039597053767, guid: 940b8f40c6cca3a42bc115b7104d7c9a, type: 3}
   - {fileID: 4849991039597053767, guid: 1672d50bd7d76f4499274bcd85c320f7, type: 3}
-  - {fileID: 4849991039597053767, guid: 239b5044f64bf1c42a7e9abd8f63ca27, type: 3}
+  - {fileID: 4849991039597053767, guid: 971407d7980ae0d4a86dbab4b7342294, type: 3}
   - {fileID: 4849991039597053767, guid: 65031b6ed67dde74f82425f69e31dcea, type: 3}
   - {fileID: 4849991039597053767, guid: d53937c5dde45a040892236ee44f2d60, type: 3}
   - {fileID: 4849991039597053767, guid: aaf3790ac2507e14492d2ea2517bdc96, type: 3}
@@ -3379,8 +3375,10 @@ MonoBehaviour:
   - {fileID: 4849991039597053767, guid: cfda993d215046547a3eedd01007e822, type: 3}
   - {fileID: 4849991039597053767, guid: 725d403523377644a888c0bd49594aa0, type: 3}
   - {fileID: 4849991039597053767, guid: 8b39a6e4f5758b44abca19c6a1eccc88, type: 3}
-  all_chunks_length: 0
-  chunks_per_floor: 0
+  level_1_chunks: []
+  level_2_chunks: []
+  level_3_chunks: []
+  level_4_chunks: []
   run_array_bool: 0
 --- !u!4 &1530145963
 Transform:

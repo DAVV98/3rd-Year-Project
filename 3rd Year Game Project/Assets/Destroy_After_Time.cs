@@ -13,4 +13,13 @@ public class Destroy_After_Time : MonoBehaviour
         // destory object x secondsafter instantiation 
         Destroy(this.gameObject, time_till_destory);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // destroy projectile if it hits ground
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 13)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -721,6 +721,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ice_platform_R (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8919235578349813774, guid: f13bf9b1cb2f23b4580a4e74ad7e9139,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f13bf9b1cb2f23b4580a4e74ad7e9139, type: 3}
 --- !u!1 &4467688660826168865 stripped
@@ -746,6 +751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ice_Platform_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609488890872193207, guid: 3fcad2156303b91408fe9fb2c5a78730,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9032580136609580450, guid: 3fcad2156303b91408fe9fb2c5a78730,
         type: 3}

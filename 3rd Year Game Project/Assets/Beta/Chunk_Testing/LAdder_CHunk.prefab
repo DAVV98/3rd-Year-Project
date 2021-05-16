@@ -545,7 +545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocker: {fileID: 89073484347979160}
-  blocker_children: {fileID: 1859707541553504751}
   buttons: {fileID: 3689619391381561190}
 --- !u!1 &3662581478593153731
 GameObject:
