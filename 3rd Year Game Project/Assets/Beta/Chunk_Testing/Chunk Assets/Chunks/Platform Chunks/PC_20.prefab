@@ -425,6 +425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_Test (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8908715598237945755, guid: dd356d28a8979564eac209b431fa6551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd356d28a8979564eac209b431fa6551, type: 3}
 --- !u!4 &4718183703236095457 stripped
@@ -949,6 +954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Platform_Test (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908715598237945755, guid: dd356d28a8979564eac209b431fa6551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd356d28a8979564eac209b431fa6551, type: 3}

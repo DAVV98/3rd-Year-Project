@@ -26,8 +26,13 @@ public class ice_snake_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // sets move direction bool
         setBool();
+
+        // patrols between set points
         patrol();
+
+        // attacks player - plays attack anim
         Attack();
     }
 
@@ -77,16 +82,30 @@ public class ice_snake_controller : MonoBehaviour
        
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function: Attack()
+    /// 
+    ///     - play attack animation if attack or stop if attack false
+    ///     - stops snake movement
+    /// </summary>
     void Attack()
     {
         if(attack == true)
         {
+            // play attack anim
             animator.SetBool("Attack", true);
+
+            // stop moving
             moveSpeed = 0;
         }
         else
         {
+            // stop anim
             animator.SetBool("Attack", false);
+
+            // return to regular speed
             moveSpeed = reg_speed;
         }
     }

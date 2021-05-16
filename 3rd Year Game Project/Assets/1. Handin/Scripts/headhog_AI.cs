@@ -16,30 +16,23 @@ public class headhog_AI : MonoBehaviour
     private float moveSpeed; // movement speed
     private bool isMoving;
     public Rigidbody2D rb;
+    private bool movingRight;
 
     [Header("Animator")]
     public Animator animator;
 
-    [Header("Attached")]
-    public float attachedTimerLenght;
-    public float currAttchedTimer;
 
     private GameObject player; // list of players
 
+    private float dist; // distance to player to go sonic mode
 
-    private bool movingRight;
-
-    public int push_dir;
-
-    private float dist;
-
-    public float push_force = 25;
+    private float push_force = 15f; // strength to pushback enemy
 
     void Start()
     {
+        // set move speed to regualr speed
         moveSpeed = speed;
         movingRight = true; // always starts enemy moving right
-        currAttchedTimer = attachedTimerLenght;
     }
 
     void Update()
@@ -53,6 +46,7 @@ public class headhog_AI : MonoBehaviour
         // makes enemy patrol set area
         patrol();
 
+        // makes the player use its "sonic" mechanic
         speed_up();
     }
     
@@ -68,7 +62,7 @@ public class headhog_AI : MonoBehaviour
         // if player moving right move towards end
         if(movingRight)
         {
-            //transform.position = new Vector2(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y); // increment x pos to move right
+           
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0)); //makes enemy look right
 
             rb.velocity = new Vector2(moveSpeed * 1, rb.velocity.y);
@@ -76,7 +70,7 @@ public class headhog_AI : MonoBehaviour
         // if player is not moving right go towards starts
         else
         {
-            //transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y); // reduce x pos to move left
+           
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0)); // makes enemy look left
 
             rb.velocity = new Vector2(moveSpeed * -1, rb.velocity.y);
@@ -159,13 +153,17 @@ public class headhog_AI : MonoBehaviour
         //      - Set platform as parent so children move with platform
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("HIT");
 
+            // set direction of push
             Vector2 pushDir = transform.position + collision.transform.position;
 
+            // normalise direction
             Vector2 pushDirN = pushDir * pushDir.normalized;
             
+            // push right if player hits from right
             if(collision.transform.position.x > this.transform.position.x) collision.GetComponent<Rigidbody2D>().AddForce(pushDirN * push_force);
+
+            // push left if player hits from left
             if (collision.transform.position.x < this.transform.position.x) collision.GetComponent<Rigidbody2D>().AddForce(-pushDirN * push_force);
 
 

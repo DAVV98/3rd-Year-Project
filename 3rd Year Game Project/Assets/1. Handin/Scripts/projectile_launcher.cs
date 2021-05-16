@@ -5,46 +5,41 @@ using UnityEngine;
 public class projectile_launcher : MonoBehaviour
 {
     [Header("Shooting Timer")]
-    public float time_between_shots;
-    private float timer;
+    public float time_between_shots; // time between fired projectiles
+    private float timer; // current time
 
     [Header("Projectiles")]
     public GameObject projectile; // projectile ejcted from launcher
-    private GameObject clone; // clone of projectile
     public Transform launch_pos; // position to launch projectile from
-    public GameObject explosion_audio;
-    public bool audio_on;
-    public GameObject EXPLOSION_COLLIDER;
-    public GameObject Player;
-    public int cannon_level;
-    private float dist_to_player;
+    public GameObject explosion_audio; // audio of fired shot
+    public bool audio_on; // turn audio on
+    public GameObject EXPLOSION_COLLIDER; // explosion cillider
+    public GameObject Player; // active player 
+    public int cannon_level; // check what floor cannon is on
+    private float dist_to_player; // distance toa ctive player
 
     // awake called before game starts
     // called here object transforms before first instantiation
     void awake()
     {
         timer = time_between_shots; // set timer to time between shots
-        clone = (GameObject)Instantiate(projectile); // clone projectile
-    }
-
-    private void Start()
-    {
-        
-       
     }
 
     // Update is called once per frame
     void Update()
     {
+        // set player as active player
         Player = GameObject.FindGameObjectWithTag("Player");
 
+        // if player exists find distance
         if(Player != null)
         {
             dist_to_player = Vector3.Distance(Player.transform.position, this.transform.position);
         }
+        // if no player set distance to unimaginable value
         else
         {
-            dist_to_player = 1000;
+            dist_to_player = 10000;
         }
        
 
@@ -54,11 +49,14 @@ public class projectile_launcher : MonoBehaviour
         if (timer <= 0)
         {
             Instantiate(projectile, launch_pos.position, Quaternion.identity); // instaniate projectile
+            
+            // only play sound effect is player is close to cannon and on same floor - avioid cray cray noise
             if (dist_to_player <= 20 && cannon_level == Player.GetComponent<Player_Controller>().level)
             {
                 explosion_audio.GetComponent<AudioSource>().Play(); // play cannon sound effect
             }
-
+            
+            // reset timer
             timer = time_between_shots; // timer = start time
         }
         else

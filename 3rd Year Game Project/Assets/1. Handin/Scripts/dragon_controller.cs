@@ -10,6 +10,10 @@ public class dragon_controller : MonoBehaviour
     [Header("Direction")]
     public Transform left;
     public Transform right;
+    public Transform left_barrier;
+    public Transform right_barrier;
+    private float dist;
+
 
     [Header("Timer")]
     public float time_between_attacks;
@@ -27,7 +31,7 @@ public class dragon_controller : MonoBehaviour
     private float curr_time_between_eggs;
     public bool canDrop;
 
-    private GameObject[] player; // list of players
+    private GameObject player; // list of players
 
     ///---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +59,7 @@ public class dragon_controller : MonoBehaviour
     void Update()
     {
         // create an array of players
-        player = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // sets dragon movment direction
         set_direction();
@@ -67,10 +71,12 @@ public class dragon_controller : MonoBehaviour
         }
 
         // runs attack timer, whihc also calls attack functions
-        attack_timer();
+        //attack_timer();
+
+        // targets player if under attack distance, otherwise sets attacking to false
+        target_player();
 
 
-        
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -127,6 +133,8 @@ public class dragon_controller : MonoBehaviour
     /// </summary>
     void attack_timer()
     {
+
+        /*
         // if timer zero target player, continue counting down timer
         if(timer_curr <= 0 && timer_curr >= -follow_time)
         {
@@ -145,7 +153,7 @@ public class dragon_controller : MonoBehaviour
         {
             timer_curr -= Time.deltaTime;
         }
-
+        */
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,18 +164,24 @@ public class dragon_controller : MonoBehaviour
     /// </summary>
     void target_player()
     {
-        if(player.Length > 0)
+        
+        if(player != null)
         {
             // check distance to each players
-            float dist = Vector3.Distance(transform.position, player[0].transform.position);
-
-            // if inside distance range attack player
-            if (dist <= attack_range)
-            {
-                attacking = true;
-                attack(player[0].transform);
-            }
+            dist = Vector2.Distance(transform.position, player.transform.position);
         }
+
+        // if inside distance range attack player
+        if (dist <= attack_range)
+        {
+            attacking = true;
+            if (player != null) attack(player.transform);
+        }
+        else
+        {
+            attacking = false;
+        }
+        
        
 
     }
@@ -181,10 +195,13 @@ public class dragon_controller : MonoBehaviour
     void attack(Transform player)
     {
         // vector of the position of the target player
-        Vector3 target = new Vector3(player.position.x, this.transform.position.y, this.transform.position.z);
+        Vector2 target = new Vector2(player.position.x, this.transform.position.y);
 
-        // move dragon towards target
-        transform.position = Vector3.MoveTowards(this.transform.position, target, moveSpeed * Time.deltaTime);
+        if(player.position.x > left_barrier.transform.position.x && player.position.x < right_barrier.transform.position.x)
+        {
+            // move dragon towards target
+            transform.position = Vector3.MoveTowards(this.transform.position, target, moveSpeed * Time.deltaTime);
+        }
 
         // vector of position to spawn eggs
         Vector3 spawn_point = new Vector3(eggs_spawn.position.x, eggs_spawn.position.y, 1);
@@ -192,10 +209,10 @@ public class dragon_controller : MonoBehaviour
         // if dragon canDrop eggs, if above player, instantiate egg, set canDrop to false
         if(canDrop)
         {
-            if (this.transform.position.x < (player.position.x + 1) && this.transform.position.x > (player.position.x - 1))
+            if (this.transform.position.x < (player.position.x + 0.5) && this.transform.position.x > (player.position.x - 0.1))
             {
                 
-                Instantiate(eggs[Random.Range(0,3)], spawn_point, Quaternion.identity);
+                Instantiate(eggs[Random.Range(0,25)], spawn_point, Quaternion.identity);
                 canDrop = false;
             }
            
