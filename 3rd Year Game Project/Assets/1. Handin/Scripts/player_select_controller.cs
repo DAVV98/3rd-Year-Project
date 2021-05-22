@@ -17,21 +17,16 @@ public class player_select_controller : MonoBehaviour
     public GameObject P3_Text;
     public GameObject P4_Text;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         // shows players how many players are active
         players_num.text = active_players.ToString();
 
+        // takes player input and changes how many active players there wiill be in game
         player_input();
 
+        // hides inactive player icons
         hidden_players();
     }
 

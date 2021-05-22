@@ -6,22 +6,22 @@ using UnityEngine.UI;
 public class player_turn_controller : MonoBehaviour
 {
     [Header("Players")]
-    public GameObject[] players;
-    public bool isPlayer1_turn;
-    public bool isPlayer2_turn;
-    public bool isPlayer3_turn;
-    public bool isPlayer4_turn;
+    public GameObject[] players; // list of players in game
+    public bool isPlayer1_turn; // sets player 1 active level
+    public bool isPlayer2_turn; // sets player 2 active level
+    public bool isPlayer3_turn; // sets player 3 active level
+    public bool isPlayer4_turn; // sets player 4 active level 
     public int start_player;
     
 
     [Header("Camera_Controller")]
-    public Camera[] player_cam;
-    public float cam_timer_1;
-    public float cam_timer_2;
-    public float cam_timer_3;
-    public float cam_timer_4;
+    public Camera[] player_cam; // list of player cameras
+    public float cam_timer_1; // player 1 camera timer
+    public float cam_timer_2; // player 2 camera timer
+    public float cam_timer_3; // player 3 camera timer
+    public float cam_timer_4; // player 4 camera timer
 
-    public float switch_cam_length = 3;
+    public float switch_cam_length = 3; // time it takes to switch cameras
 
     /// <summary>
     /// Function Awake(): 
@@ -30,12 +30,13 @@ public class player_turn_controller : MonoBehaviour
     private void Awake()
     {
         
-       
+       // if only two players are active reduce players array by two
         if (player_select_controller.active_players == 2)
         {
             System.Array.Resize(ref players, players.Length - 1);
             System.Array.Resize(ref players, players.Length - 1);
         }
+        // if only three players are active reduce players array by one
         else if (player_select_controller.active_players == 3)
         {
             System.Array.Resize(ref players, players.Length - 1);
@@ -59,6 +60,7 @@ public class player_turn_controller : MonoBehaviour
             {
                 players[i].GetComponent<Player_Controller>().isMyTurn = false;
             }
+            // set starting players turn as active
             else if(i == start_player)
             {
                 players[i].GetComponent<Player_Controller>().isMyTurn = true;
@@ -78,17 +80,13 @@ public class player_turn_controller : MonoBehaviour
     }
 
     /// <summary>
-    /// Function Awake(): 
-    ///     - Runs every fra,
+    /// Function Update(): 
+    ///     - Runs every frame
     /// </summary>
     private void Update()
-    {
-        
-        
+    {           
         // Run turn switcher
         next();
-
-       
 
         // Update player controller turns depending on switcher
         isPlayer1_turn = players[0].GetComponent<Player_Controller>().isMyTurn;

@@ -26,7 +26,7 @@ public class headhog_AI : MonoBehaviour
 
     private float dist; // distance to player to go sonic mode
 
-    private float push_force = 15f; // strength to pushback enemy
+    private float push_force = 10; // strength to pushback enemy
 
     void Start()
     {

@@ -15,15 +15,20 @@ public class Cloud_Background : MonoBehaviour
         // get cloud rigidbody.
         rb = this.GetComponent<Rigidbody2D>();
 
+        // set random speed for cloud
         speed = Random.Range(cloud_speed - 0.15f, cloud_speed + 0.15f);
+        
+        // set random to scale cloud
         scale = Random.Range(-0.15f, 0.15f);
 
+        //sclae clouds
         this.transform.localScale = new Vector3(this.transform.localScale.x + scale, this.transform.localScale.y + scale, this.transform.localScale.z);
 
     }
     // Update is called once per frame
     void Update()
     {
+        // move clouds rightwards
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
@@ -32,6 +37,7 @@ public class Cloud_Background : MonoBehaviour
         // Move to next floor hub when using ladder
         if (collision.gameObject.tag == "cloud_stopper")
         {
+            // if clouds out of game reset to begining
             this.transform.position = new Vector2(start_clouds.position.x, this.transform.position.y);
         }
     }

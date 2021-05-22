@@ -17,6 +17,8 @@ public class global_player_controller : MonoBehaviour
 
     [Header("Money")]
     public int GLOBAL_coins;
+    public GameObject[] GLOBAL_coin_hubs;
+    public GameObject GLOBAL_bronze_coin;
 
     [Header("Chunks")]
     public int GLOBAL_num_chunks;

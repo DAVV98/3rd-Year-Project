@@ -13,7 +13,10 @@ public class Explosion_Stopper : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            // instatiate cannon poarticel effect
             Instantiate(explosion, exp_pos);
+
+            // play effect
             explosion.Play();
 
         }
@@ -24,6 +27,7 @@ public class Explosion_Stopper : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            // stop effect
             explosion.Stop();
         }
     }

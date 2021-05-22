@@ -29,11 +29,13 @@ public class Egg : MonoBehaviour
             if(isGold)
             {
                 collision.gameObject.GetComponent<Player_Controller>().coins += 6000;
+                Destroy(this.gameObject);
             }
             // if hit egg deduct life
             else
             {
                 collision.gameObject.GetComponent<Player_Controller>().hit = true;
+                Destroy(this.gameObject);
             }
            
         }

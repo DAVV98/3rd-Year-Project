@@ -8,6 +8,7 @@ public class Game_End : MonoBehaviour
     public int scene_value;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // on collision with player
         if(collision.gameObject.tag == "Player")
         {
             // next scene

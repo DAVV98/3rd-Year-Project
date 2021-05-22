@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -85,6 +86,8 @@ public class Player_Controller : MonoBehaviour
     [Header("Coins")]
     public int coins; // coins availabe to use
     private int ladderPrice; // price of ladder
+    private GameObject[] coin_hubs;
+    private GameObject bronze_coin;
    
 
     [Header("Current Floor")]
@@ -117,6 +120,12 @@ public class Player_Controller : MonoBehaviour
     [Header("Explosion Effect")]
     public ParticleSystem explosion;
     public Transform exp_pos;
+    
+    [Header("Pause")]
+    // grounding checks
+    private bool pause;
+    public GameObject pause_menu;
+
 
     // slide protection
     private float start_slide_timer = 0.1f;
@@ -225,6 +234,10 @@ public class Player_Controller : MonoBehaviour
         transition_timer = GPC_Object.GetComponent<global_player_controller>().GLOBAL_transition_timer;
 
         groundedRaycastLength = GPC_Object.GetComponent<global_player_controller>().GLOBAL_raycast_length;
+
+        coin_hubs = GPC_Object.GetComponent<global_player_controller>().GLOBAL_coin_hubs;
+
+        bronze_coin = GPC_Object.GetComponent<global_player_controller>().GLOBAL_bronze_coin;
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,6 +310,9 @@ public class Player_Controller : MonoBehaviour
         // function that checks if player is hurt - plays effect and lowers health
         hurt();
 
+        // pauses game
+        Pause_Menu();
+
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -348,7 +364,7 @@ public class Player_Controller : MonoBehaviour
     void setAnimations()
     {
         // If players turn
-        if(isMyTurn)
+        if (isMyTurn && !pause)
         {
             // make player look in the correct direction
             if (horizontalInput > 0)
@@ -855,6 +871,7 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.tag == "Kill_Bottom")
         {
             this.transform.position = levels[0].transform.position;
+            health = 0;
         }
 
         // if collision with speed power up
@@ -1021,8 +1038,51 @@ public class Player_Controller : MonoBehaviour
         {
             // teleport player to floor hub
             this.transform.position = levels[level - 1].transform.position;
+            Instantiate(bronze_coin, coin_hubs[level - 1].transform.position, Quaternion.identity);
             // rest lives
             health = 3;
+        }
+    }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /// <summary>
+    /// Function Pause_Menu()
+    ///     - Pauses game
+    ///     - allows resume
+    ///     - allows to go to main menu
+    /// </summary>
+    void Pause_Menu()
+    {
+        // if pause input switch bool
+        if (Input.GetButtonDown("Button_Seven"))
+        {
+            pause = !pause;
+        }
+
+        // if paused
+        if(pause)
+        {
+            // if menus button pressed go to menu
+            if (Input.GetButtonDown("Button_Two"))
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(0);
+            }
+            // else pause time and activate mpause menu
+            else
+            {
+                Time.timeScale = 0;
+                pause_menu.SetActive(true);
+            }
+            
+        }
+        // if not paused make sure time is regular
+        else
+        {
+            Time.timeScale = 1;
+            pause_menu.SetActive(false);
+
         }
     }
 

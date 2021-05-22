@@ -11,11 +11,15 @@ public class money_wiz : MonoBehaviour
 
     private void Start()
     {
+        //hide controller input hint
         buttons.SetActive(false);
+
+        // activate portal blocker
         blocker.SetActive(true);
     }
     void Update()
     {
+        // if player exists
         if(active_player != null)
         {
             // turns on blocker when player goes through ladder

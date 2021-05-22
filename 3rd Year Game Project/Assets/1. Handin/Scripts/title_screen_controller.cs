@@ -28,8 +28,10 @@ public class title_screen_controller : MonoBehaviour
         T_text.color = unselected_color;
         C_text.color = unselected_color;
 
+        // set timer to lenght
         curr_surf_time = start_surf_time;
 
+        // start button on top selection
         button = 1;
     }
  
@@ -37,19 +39,26 @@ public class title_screen_controller : MonoBehaviour
     void Update()
     {
 
-
+        // player input to scroll
         player_input();
 
+        // switch statment that chnages button colours if button slelected, if button pressed go to that selection
         switch (button)
         {
+            // load playselect scene - change colour of button to show on it
             case 1:
                 color_size_text(PS_text, T_text, C_text);
                 if(Input.GetButtonDown("Button_One")) SceneManager.LoadScene(1);
                 break;
+
+            // load tutorial - change colour of button, if slected go to tutorial
             case 2:
                 color_size_text(T_text, PS_text, C_text);
                
                 break;
+
+
+            // load conrols scene - change colour of button, if slected go to controls scene
             case 3:
                 color_size_text(C_text, PS_text, T_text);
                 if (Input.GetButtonDown("Button_One")) SceneManager.LoadScene(2);
@@ -81,12 +90,19 @@ public class title_screen_controller : MonoBehaviour
 
     }
 
+    /// <summary>
+    ///  Function player_input():
+    ///     - gets player input and allows for scrolling through slection
+    /// </summary>
     void player_input()
     {
+        // gets vertical input
         float ver_in = Input.GetAxis("Vertical");
 
+        // if input up, surf up
         if(ver_in < 0 && button < 3)
         {
+            // timer between scrolling to allow for controlled surfing
             if(curr_surf_time > 0)
             {
                 curr_surf_time -= Time.deltaTime;
@@ -99,8 +115,11 @@ public class title_screen_controller : MonoBehaviour
             
         }
 
+        // if input down, surf down
         if (ver_in > 0 && button > 1)
         {
+
+            // timer between scrolling to allow for controlled surfing
             if (curr_surf_time > 0)
             {
                 curr_surf_time -= Time.deltaTime;

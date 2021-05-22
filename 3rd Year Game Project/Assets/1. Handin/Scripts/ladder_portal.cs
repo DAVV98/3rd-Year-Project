@@ -14,13 +14,18 @@ public class ladder_portal : MonoBehaviour
         // turns blocker off
         if(blocker_off)
         {
+            // enables collider that detects player for teleportation
             portal.GetComponent<CircleCollider2D>().enabled = true;
+            // hides portal protector
             children.SetActive(false);
         }
         // turns blocker on
         else
         {
+            // disables collider that detects player for teleportation
             portal.GetComponent<CircleCollider2D>().enabled = false;
+
+            // shows portal blocker
             children.SetActive(true);
         }
     }
