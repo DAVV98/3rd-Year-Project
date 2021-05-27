@@ -6,30 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Title_Screen.unity
+    path: Assets/1. Handin/Beta_Test_Build/Title_Screen.unity
     guid: c6b2e5e5b38913846a282f737d0ee95a
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Number_Players.unity
+    path: Assets/1. Handin/Beta_Test_Build/Number_Players.unity
     guid: 336e181df95dce245a77f47e65a362cf
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Controls.unity
+    path: Assets/1. Handin/Beta_Test_Build/Controls.unity
     guid: 8c7c56514d96e1743b941e34928f5ffa
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Loading_Screen.unity
+    path: Assets/1. Handin/Beta_Test_Build/Loading_Screen.unity
     guid: d9744765a26de2345bc3b0609094e711
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Game Scene.unity
+    path: Assets/1. Handin/Beta_Test_Build/Game Scene.unity
     guid: a713229eeadd34840af87df87091ada5
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Winner_Scene_1.unity
+    path: Assets/1. Handin/Beta_Test_Build/Winner_Scene_1.unity
     guid: 35fc08fcab3dfc6448697cdcc7e16c86
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Winner_Scene_2.unity
+    path: Assets/1. Handin/Beta_Test_Build/Winner_Scene_2.unity
     guid: 2beed0ca8f16f0a4fb829c8c0d31d103
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Winner_Scene_3.unity
+    path: Assets/1. Handin/Beta_Test_Build/Winner_Scene_3.unity
     guid: 955f23cecc0c70041863dbfebf86383d
   - enabled: 1
-    path: Assets/Beta/Beta_Test_Build/Winner_Scene_4.unity
+    path: Assets/1. Handin/Beta_Test_Build/Winner_Scene_4.unity
     guid: 093218f6e5580ad48aa5d4092ef614ad
   m_configObjects: {}

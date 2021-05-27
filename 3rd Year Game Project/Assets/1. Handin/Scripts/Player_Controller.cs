@@ -652,7 +652,7 @@ public class Player_Controller : MonoBehaviour
     void useLadder()
     {
         // Get input for use object
-        if (Input.GetKeyDown("y") && canUseLadder || Input.GetButton("Button_Five") && canUseLadder)
+        if (Input.GetKeyDown("y") && canUseLadder || Input.GetButtonDown("Button_Five") && canUseLadder)
         {
             // checks if player can affors use of ladder
             if (coins >= ladderPrice)
@@ -915,7 +915,6 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.tag == "finish_line")
         {
             has_finished = true;
-            Debug.Log("Winner");
         }
 
         // set player position on map
